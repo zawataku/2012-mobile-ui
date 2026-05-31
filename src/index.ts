@@ -1,2 +1,7 @@
 // src/index.ts
-export { Listview, ListviewHeader, ListviewItem } from './components/Listview';
+export { Listview, ListviewItem, ListviewDivider } from "./components/Listview";
+export type {
+  ListviewProps,
+  ListviewItemProps,
+  ListviewDividerProps,
+} from "./components/Listview";
