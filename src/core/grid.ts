@@ -1,8 +1,8 @@
-/** グリッドの種類（ui-grid-*）。solo は 1 列、a〜d は 2〜5 列 */
-export const GRID_TYPES = ["solo", "a", "b", "c", "d"] as const;
-export type GridType = (typeof GRID_TYPES)[number];
+/** グリッドの列数 */
+export type GridColumns = 1 | 2 | 3 | 4 | 5;
 
-const COLUMNS: Record<GridType, number> = { solo: 1, a: 2, b: 3, c: 4, d: 5 };
+// 列数とグリッドの種類（ui-grid-*）の対応。1 列は solo、2〜5 列は a〜d
+const GRID_TYPES = { 1: "solo", 2: "a", 3: "b", 4: "c", 5: "d" } as const;
 const BLOCKS = ["a", "b", "c", "d", "e"] as const;
 
 export type GridClassNames = {
@@ -14,23 +14,22 @@ export type GridClassNames = {
 
 /**
  * グリッドの class 名を組み立てる（jQuery Mobile の $.fn.grid 相当）。
- * grid を省略すると子要素の数から決める。6 個以上なら 2 列（ui-grid-duo）。
+ * columns を省略すると子要素の数から決める。6 個以上なら 2 列（ui-grid-duo）。
  */
-export const gridClassNames = (count: number, grid?: GridType): GridClassNames => {
-  let type = grid;
+export const gridClassNames = (count: number, columns?: GridColumns): GridClassNames => {
+  let cols = columns;
   let duo = false;
-  if (!type) {
+  if (!cols) {
     if (count <= 5) {
-      type = GRID_TYPES[Math.max(count, 1) - 1];
+      cols = Math.max(count, 1) as GridColumns;
     } else {
-      type = "a";
+      cols = 2;
       duo = true;
     }
   }
-  const columns = COLUMNS[type];
 
   return {
-    container: `m2012-grid-${type}` + (duo ? " m2012-grid-duo" : ""),
-    blocks: Array.from({ length: count }, (_, i) => `m2012-block-${BLOCKS[i % columns]}`),
+    container: `m2012-grid-${GRID_TYPES[cols]}` + (duo ? " m2012-grid-duo" : ""),
+    blocks: Array.from({ length: count }, (_, i) => `m2012-block-${BLOCKS[i % cols]}`),
   };
 };

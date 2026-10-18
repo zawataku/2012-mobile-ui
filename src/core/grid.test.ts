@@ -24,7 +24,7 @@ describe("gridClassNames", () => {
   });
 
   it("列数を指定すると、その列数で折り返す", () => {
-    const { container, blocks } = gridClassNames(4, "b");
+    const { container, blocks } = gridClassNames(4, 3);
     expect(container).toBe("m2012-grid-b");
     expect(blocks).toEqual(["m2012-block-a", "m2012-block-b", "m2012-block-c", "m2012-block-a"]);
   });

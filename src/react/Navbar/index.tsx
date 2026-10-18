@@ -1,7 +1,7 @@
 import { Children, createContext, isValidElement, useContext } from "react";
 import type React from "react";
 import { cx, gridClassNames } from "../../core";
-import type { GridType, IconPosition } from "../../core";
+import type { GridColumns, IconPosition } from "../../core";
 import { Button } from "../Button";
 import type { ButtonProps } from "../Button";
 
@@ -15,18 +15,18 @@ export type NavbarProps = {
   /** アイコンの位置（data-iconpos）。既定は top。どれか 1 つでもアイコンがある項目すべてに適用する */
   iconpos?: IconPosition;
   /** 列数（data-grid）。省略すると項目数から決める（6 個以上は 2 列） */
-  grid?: GridType;
+  columns?: GridColumns;
   /** NavbarItem を並べる */
   children?: React.ReactNode;
   className?: string;
 };
 
-export const Navbar = ({ iconpos = "top", grid, children, className }: NavbarProps) => {
+export const Navbar = ({ iconpos = "top", columns, children, className }: NavbarProps) => {
   const items = Children.toArray(children);
   const hasIcon = items.some(
     (item) => isValidElement<{ icon?: unknown }>(item) && item.props.icon != null,
   );
-  const { container, blocks } = gridClassNames(items.length, grid);
+  const { container, blocks } = gridClassNames(items.length, columns);
 
   return (
     <div className={cx("m2012-navbar m2012-mini", className)} role="navigation">
