@@ -15,7 +15,7 @@ jQuery Mobile 1.2.0 で提供されていたコンポーネントを、React コ
 | Listview | 一部実装済み（基本表示・inset・divider・count・見出し / 説明 / aside・アイコン / サムネイル・static・theme） |
 | Button / ControlGroup | 実装済み |
 | Page / Header / Footer / Navbar / Fixed toolbar | 実装済み |
-| Grid / Collapsible / CollapsibleSet | 未実装 |
+| Grid / Collapsible / CollapsibleSet | 実装済み |
 | フォーム（TextInput / Slider / FlipSwitch / Checkbox / Radio / Select） | 未実装 |
 | Popup / Dialog / Loader | 未実装 |
 | ページ遷移アニメーション | 未実装 |
@@ -145,7 +145,50 @@ jQuery Mobile 1.2.0 のデフォルトテーマの swatch `a`〜`e` を使えま
 | prop | 型 | 説明 |
 | --- | --- | --- |
 | `iconpos` | `IconPosition` | アイコンの位置（既定は `top`） |
-| `grid` | `"solo" \| "a" \| "b" \| "c" \| "d"` | 列数を指定する（省略すると項目数から決める） |
+| `columns` | `1 \| 2 \| 3 \| 4 \| 5` | 列数を指定する（省略すると項目数から決める） |
+
+### Grid
+
+```tsx
+<Grid>
+  <Button>Cancel</Button>
+  <Button theme="b">Submit</Button>
+</Grid>
+```
+
+子要素を等幅の列に並べます。列数は子要素の数から決まり（6 個以上は 2 列）、`columns`（`1`〜`5`）で指定すると行が埋まったところで折り返します。
+
+### Collapsible / CollapsibleSet
+
+```tsx
+<Collapsible heading="詳細" contentTheme="c">
+  <p>見出しのタップで開閉します。</p>
+</Collapsible>
+
+<CollapsibleSet>
+  <Collapsible heading="Section 1" defaultCollapsed={false}>…</Collapsible>
+  <Collapsible heading="Section 2">…</Collapsible>
+</CollapsibleSet>
+```
+
+`CollapsibleSet` の中では同時に 1 つだけ開きます（アコーディオン）。
+
+| prop | 型 | 説明 |
+| --- | --- | --- |
+| `heading` | `ReactNode` | 見出し（`Collapsible` のみ） |
+| `headingLevel` | `1`〜`6` | 見出しの要素（既定は `3`。`Collapsible` のみ） |
+| `defaultCollapsed` / `collapsed` / `onCollapsedChange` | | 開閉状態（既定は閉じている。`Collapsible` のみ） |
+| `defaultExpanded` / `expanded` / `onExpandedChange` | `number \| null` | 開いている項目の位置（`CollapsibleSet` のみ） |
+| `theme` / `contentTheme` | `Theme` | 見出し / 中身の swatch。`contentTheme` を指定すると中身に背景と枠線が付く |
+| `inset` | `boolean` | 角丸・左右の枠線付き（既定は `true`）。`false` で左右いっぱいに広がる |
+| `mini` | `boolean` | 見出しを小さいサイズにする |
+| `iconpos` / `collapsedIcon` / `expandedIcon` | | 見出しのアイコンの位置と種類（既定は左・`plus`・`minus`） |
+
+`CollapsibleSet` に指定した `theme` などは、中の `Collapsible` が受け継ぎます。
+
+### リンク
+
+`Page` や `Header` などの中のリンク（`<a>`）は、jQuery Mobile と同じく太字で swatch のリンク色になります（ボタン・リスト項目を除く）。詳細度を低くしているので、利用側の CSS で簡単に上書きできます。
 
 ### Listview
 
