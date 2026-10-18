@@ -13,6 +13,7 @@
  *   --m2012-btn-up-*     ボタンの通常状態（ui-btn-up-X）
  *   --m2012-btn-hover-*  ボタンのホバー状態（ui-btn-hover-X）
  *   --m2012-btn-down-*   ボタンの押下状態（ui-btn-down-X）
+ *   --m2012-bar-btn-shadow  bar の中のボタンの影（a〜c は白いハイライト、d・e は通常の影）
  */
 
 /* 全 swatch 共通 */
@@ -37,6 +38,8 @@
 
 /* swatch A */
 [data-m2012-theme="a"] {
+  /* この swatch の bar の中にあるボタンの影 */
+  --m2012-bar-btn-shadow: 0px 1px 0 rgba(255, 255, 255, 0.3);
   --m2012-bar-border-color: #333;
   --m2012-bar-bg: #111;
   --m2012-bar-bg-start: #3c3c3c;
@@ -82,6 +85,8 @@
 
 /* swatch B */
 [data-m2012-theme="b"] {
+  /* この swatch の bar の中にあるボタンの影 */
+  --m2012-bar-btn-shadow: 0px 1px 0 rgba(255, 255, 255, 0.3);
   --m2012-bar-border-color: #456f9a;
   --m2012-bar-bg: #5e87b0;
   --m2012-bar-bg-start: #6facd5;
@@ -128,6 +133,8 @@
 /* swatch C */
 :root,
 [data-m2012-theme="c"] {
+  /* この swatch の bar の中にあるボタンの影 */
+  --m2012-bar-btn-shadow: 0px 1px 0 rgba(255, 255, 255, 0.3);
   --m2012-bar-border-color: #b3b3b3;
   --m2012-bar-bg: #eee;
   --m2012-bar-bg-start: #f0f0f0;
@@ -173,6 +180,8 @@
 
 /* swatch D */
 [data-m2012-theme="d"] {
+  /* この swatch の bar の中にあるボタンの影 */
+  --m2012-bar-btn-shadow: var(--m2012-box-shadow);
   --m2012-bar-border-color: #bbb;
   --m2012-bar-bg: #bbb;
   --m2012-bar-bg-start: #ddd;
@@ -218,6 +227,8 @@
 
 /* swatch E */
 [data-m2012-theme="e"] {
+  /* この swatch の bar の中にあるボタンの影 */
+  --m2012-bar-btn-shadow: var(--m2012-box-shadow);
   --m2012-bar-border-color: #f7c942;
   --m2012-bar-bg: #fadb4e;
   --m2012-bar-bg-start: #fceda7;

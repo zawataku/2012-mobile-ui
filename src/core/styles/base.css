@@ -117,6 +117,15 @@ a.m2012-link-inherit {
   color: var(--m2012-body-link-active-color);
 }
 
+/* bar の中のボタンの影（.ui-bar-a .ui-shadow など）。
+ * ボタン自身の swatch ではなく bar の swatch で決まるので、bar の要素で値を確定させて子孫に渡す */
+.m2012-surface-bar {
+  --m2012-in-bar-shadow: var(--m2012-bar-btn-shadow);
+}
+.m2012-surface-bar .m2012-shadow {
+  box-shadow: var(--m2012-in-bar-shadow);
+}
+
 /* ===================================================================
  * フォーカス（ui-focus）
  * jQuery Mobile は JS で ui-focus を付けていたが、ここでは :focus-visible で代用する。

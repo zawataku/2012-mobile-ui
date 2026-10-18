@@ -1,0 +1,92 @@
+/*
+ * トランジション（in / out / reverse と各アニメーション）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.transition*.css に準拠。
+ * keyframes 名は他の CSS と衝突しないよう m2012- を付けている。
+ * 今は固定ツールバーで使う fade / slideup / slidedown のみ。ページ遷移用のものは Phase 7 で追加する。
+ */
+.m2012-in {
+  animation-duration: 350ms;
+  animation-timing-function: ease-out;
+}
+.m2012-out {
+  animation-duration: 225ms;
+  animation-timing-function: ease-in;
+}
+
+@keyframes m2012-fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes m2012-fadeout {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* fade */
+.m2012-fade.m2012-out {
+  opacity: 0;
+  animation-name: m2012-fadeout;
+  animation-duration: 125ms;
+}
+.m2012-fade.m2012-in {
+  opacity: 1;
+  animation-name: m2012-fadein;
+  animation-duration: 225ms;
+}
+
+/* slideup（下から出てくる） */
+@keyframes m2012-slideinfrombottom {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes m2012-slideouttobottom {
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
+}
+.m2012-slideup.m2012-out {
+  animation-name: m2012-fadeout;
+  animation-duration: 100ms;
+}
+.m2012-slideup.m2012-in {
+  transform: translateY(0);
+  animation-name: m2012-slideinfrombottom;
+  animation-duration: 250ms;
+}
+.m2012-slideup.m2012-in.m2012-reverse {
+  animation-name: m2012-fadein;
+  animation-duration: 150ms;
+}
+.m2012-slideup.m2012-out.m2012-reverse {
+  transform: translateY(100%);
+  animation-name: m2012-slideouttobottom;
+  animation-duration: 200ms;
+}
+
+/* slidedown（上から出てくる） */
+@keyframes m2012-slideinfromtop {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+@keyframes m2012-slideouttotop {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+.m2012-slidedown.m2012-out {
+  animation-name: m2012-fadeout;
+  animation-duration: 100ms;
+}
+.m2012-slidedown.m2012-in {
+  transform: translateY(0);
+  animation-name: m2012-slideinfromtop;
+  animation-duration: 250ms;
+}
+.m2012-slidedown.m2012-in.m2012-reverse {
+  animation-name: m2012-fadein;
+  animation-duration: 150ms;
+}
+.m2012-slidedown.m2012-out.m2012-reverse {
+  transform: translateY(-100%);
+  animation-name: m2012-slideouttotop;
+  animation-duration: 200ms;
+}

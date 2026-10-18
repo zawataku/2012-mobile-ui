@@ -1,0 +1,173 @@
+/*
+ * Header / Footer（ui-header / ui-footer）と固定ツールバー（ui-header-fixed など）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.core.css・jquery.mobile.button.css・
+ * jquery.mobile.fixedToolbar.css に準拠。
+ *
+ * 固定ツールバーは position: fixed とページの余白の計算の代わりに position: sticky で実現する。
+ * 非表示（m2012-fixed-hidden）にすると固定をやめ、本来の位置に戻る（jQuery Mobile と同じ）。
+ * fullscreen はコンテンツに重ねるため position: fixed を使う。
+ *
+ * マークアップ:
+ *   <div class="m2012-header m2012-surface-bar" role="banner" data-m2012-theme="a">
+ *     <div class="m2012-btn-left"><a class="m2012-btn …">…</a></div>
+ *     <h1 class="m2012-title">タイトル</h1>
+ *     <div class="m2012-btn-right"><a class="m2012-btn …">…</a></div>
+ *   </div>
+ */
+
+/* ===================================================================
+ * ヘッダー・フッター
+ * =================================================================== */
+.m2012-header,
+.m2012-footer {
+  position: relative;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+
+.m2012-header .m2012-title,
+.m2012-footer .m2012-title {
+  display: block;
+  min-height: 1.1em;
+  margin: 0.6em 30% 0.8em;
+  padding: 0;
+  overflow: hidden;
+  font-size: 16px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  outline: 0 !important;
+}
+.m2012-footer .m2012-title {
+  margin: 0.6em 15px 0.8em;
+}
+
+/* 左右のボタン（ui-btn-left / ui-btn-right）。
+ * ボタン自身に付けても、ボタンを包む要素に付けてもよい */
+:is(.m2012-header, .m2012-footer) :is(.m2012-btn-left, .m2012-btn-right) {
+  position: absolute;
+  top: 3px;
+  margin: 0;
+}
+:is(.m2012-header, .m2012-footer) .m2012-btn-left {
+  left: 5px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-btn-right {
+  right: 5px;
+}
+
+/* ===================================================================
+ * ヘッダー・フッター内のボタン
+ * 既定で inline・mini 相当になる（m2012-btn-block / m2012-fullsize で戻せる）
+ * =================================================================== */
+:is(.m2012-header, .m2012-footer) > .m2012-btn,
+:is(.m2012-header, .m2012-footer) > :is(.m2012-btn-left, .m2012-btn-right) > .m2012-btn {
+  display: inline-block;
+  margin: 0;
+}
+:is(.m2012-header, .m2012-footer) > button.m2012-btn,
+:is(.m2012-header, .m2012-footer) > :is(.m2012-btn-left, .m2012-btn-right) > button.m2012-btn {
+  width: auto;
+}
+:is(.m2012-header, .m2012-footer) .m2012-btn-block {
+  display: block;
+}
+
+:is(.m2012-header, .m2012-footer) .m2012-btn-inner {
+  padding: 0.55em 11px 0.5em;
+  font-size: 12.5px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-fullsize .m2012-btn-inner {
+  padding: 0.6em 20px;
+  font-size: 16px;
+}
+
+:is(.m2012-header, .m2012-footer) .m2012-btn-icon-left .m2012-btn-inner {
+  padding-left: 30px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-btn-icon-right .m2012-btn-inner {
+  padding-right: 30px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-btn-icon-top .m2012-btn-inner {
+  padding: 30px 3px 0.5em 3px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-btn-icon-bottom .m2012-btn-inner {
+  padding: 0.55em 3px 30px 3px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-btn-icon-left .m2012-icon {
+  left: 5px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-btn-icon-right .m2012-icon {
+  right: 5px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-btn-icon-top .m2012-icon {
+  top: 5px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-btn-icon-bottom .m2012-icon {
+  bottom: 5px;
+}
+
+/* アイコンのみのボタンは余白なしのまま（上の余白の指定を打ち消す）、少し下げる */
+:is(.m2012-header, .m2012-footer) .m2012-btn-icon-notext .m2012-btn-inner {
+  padding: 0;
+}
+:is(.m2012-header, .m2012-footer) .m2012-btn-icon-notext {
+  top: 6px;
+}
+/* 包む要素で top: 3px にしているので、ボタン側は残りの 3px だけ下げる */
+:is(.m2012-btn-left, .m2012-btn-right) > .m2012-btn-icon-notext {
+  top: 3px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-btn-left.m2012-btn-icon-notext,
+:is(.m2012-header, .m2012-footer) .m2012-btn-right.m2012-btn-icon-notext {
+  top: 6px;
+}
+
+/* ヘッダー・フッター内の ControlGroup */
+:is(.m2012-bar, .m2012-header, .m2012-footer) > .m2012-controlgroup {
+  margin: 0 5px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-controlgroup .m2012-btn-icon-notext .m2012-btn-inner {
+  height: 16px;
+  padding: 0.55em 11px 0.5em;
+}
+
+/* ===================================================================
+ * 固定ツールバー（data-position="fixed"）
+ * =================================================================== */
+.m2012-header-fixed,
+.m2012-footer-fixed {
+  position: sticky;
+  z-index: 1000;
+}
+.m2012-header-fixed {
+  top: 0;
+}
+.m2012-footer-fixed {
+  bottom: 0;
+}
+:is(.m2012-header-fixed, .m2012-footer-fixed) .m2012-btn {
+  z-index: 10;
+}
+
+/* 全画面（data-fullscreen）: コンテンツに重ねて半透明で表示する */
+.m2012-header-fullscreen,
+.m2012-footer-fullscreen {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  opacity: 0.9;
+}
+
+/* 非表示: 固定をやめて本来の位置に戻す。全画面のときは画面外に出す */
+.m2012-header-fixed.m2012-fixed-hidden,
+.m2012-footer-fixed.m2012-fixed-hidden {
+  position: relative;
+}
+.m2012-header-fullscreen.m2012-fixed-hidden,
+.m2012-footer-fullscreen.m2012-fixed-hidden {
+  position: absolute;
+  left: -9999px;
+}

@@ -6,6 +6,8 @@ export { ControlGroup } from "./ControlGroup";
 export type { ControlGroupProps } from "./ControlGroup";
 export { Page, Content } from "./Page";
 export type { PageProps, ContentProps } from "./Page";
+export { Header, Footer, BackButton } from "./Toolbar";
+export type { HeaderProps, FooterProps, BackButtonProps, FixedToolbarOptions } from "./Toolbar";
 export { Navbar, NavbarItem } from "./Navbar";
 export type { NavbarProps, NavbarItemProps } from "./Navbar";
 export { Listview, ListviewItem, ListviewDivider } from "./Listview";
