@@ -6,18 +6,14 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'MobileUI2012',
-      fileName: (format) => `2012-mobile-ui.${format}.js`
+      entry: path.resolve(__dirname, 'src/main.ts'),
+      formats: ['es', 'cjs'],
+      fileName: (format) => (format === 'es' ? '2012-mobile-ui.js' : '2012-mobile-ui.cjs'),
+      cssFileName: 'style',
     },
-    rollupOptions: {
-      external: ['react', 'react-dom'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM'
-        }
-      }
-    }
-  }
+    rolldownOptions: {
+      // react/jsx-runtime なども含め、React 本体はバンドルしない
+      external: [/^react($|\/)/, /^react-dom($|\/)/],
+    },
+  },
 });
