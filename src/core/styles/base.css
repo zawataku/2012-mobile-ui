@@ -1,0 +1,225 @@
+/*
+ * 共通の見た目（surface）とユーティリティ class
+ *
+ * surface は「どの面の色を使うか」だけを決め、色そのものは theme.css の変数から取る。
+ * swatch の切り替えは data-m2012-theme 属性で行う。
+ */
+
+/* ===================================================================
+ * surface（ui-bar-X / ui-body-X / ui-btn-up-X 相当）
+ * =================================================================== */
+.m2012-surface-bar {
+  border: 1px solid var(--m2012-bar-border-color);
+  background: var(--m2012-bar-bg);
+  background-image: linear-gradient(var(--m2012-bar-bg-start), var(--m2012-bar-bg-end));
+  color: var(--m2012-bar-color);
+  font-family: var(--m2012-font-family);
+  font-weight: bold;
+  text-shadow: var(--m2012-bar-text-shadow);
+}
+
+.m2012-surface-body {
+  border: 1px solid var(--m2012-body-border-color);
+  background: var(--m2012-body-bg);
+  background-image: linear-gradient(var(--m2012-body-bg-start), var(--m2012-body-bg-end));
+  color: var(--m2012-body-color);
+  font-family: var(--m2012-font-family);
+  font-weight: normal;
+  text-shadow: var(--m2012-body-text-shadow);
+}
+
+.m2012-surface-btn {
+  border: 1px solid var(--m2012-btn-up-border-color);
+  background: var(--m2012-btn-up-bg);
+  background-image: linear-gradient(var(--m2012-btn-up-bg-start), var(--m2012-btn-up-bg-end));
+  color: var(--m2012-btn-up-color);
+  font-family: var(--m2012-font-family);
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: var(--m2012-btn-up-text-shadow);
+}
+.m2012-surface-btn .m2012-link-inherit {
+  color: var(--m2012-btn-up-link-color);
+}
+
+/* クリックできる btn surface のホバー / 押下（ui-btn-hover-X / ui-btn-down-X）
+ * タッチ端末でホバーが残らないよう、ホバーはポインタ端末に限る */
+.m2012-clickable {
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .m2012-surface-btn.m2012-clickable:hover {
+    border-color: var(--m2012-btn-hover-border-color);
+    background: var(--m2012-btn-hover-bg);
+    background-image: linear-gradient(var(--m2012-btn-hover-bg-start), var(--m2012-btn-hover-bg-end));
+    color: var(--m2012-btn-hover-color);
+    text-shadow: var(--m2012-btn-hover-text-shadow);
+  }
+  .m2012-surface-btn.m2012-clickable:hover .m2012-link-inherit {
+    color: var(--m2012-btn-hover-link-color);
+  }
+}
+.m2012-surface-btn.m2012-clickable:active {
+  border-color: var(--m2012-btn-down-border-color);
+  background: var(--m2012-btn-down-bg);
+  background-image: linear-gradient(var(--m2012-btn-down-bg-start), var(--m2012-btn-down-bg-end));
+  color: var(--m2012-btn-down-color);
+  text-shadow: var(--m2012-btn-down-text-shadow);
+}
+.m2012-surface-btn.m2012-clickable:active .m2012-link-inherit {
+  color: var(--m2012-btn-down-link-color);
+}
+
+/* active 状態（ui-btn-active）。swatch に関係なく共通の青 */
+.m2012-btn-active,
+.m2012-btn-active.m2012-clickable:hover,
+.m2012-btn-active.m2012-clickable:active {
+  border-color: var(--m2012-active-border-color);
+  background: var(--m2012-active-bg);
+  background-image: linear-gradient(var(--m2012-active-bg-start), var(--m2012-active-bg-end));
+  color: var(--m2012-active-color);
+  text-shadow: var(--m2012-active-text-shadow);
+}
+.m2012-btn-active .m2012-link-inherit {
+  color: var(--m2012-active-color);
+}
+
+/* ボタン内のリンク（a.ui-link-inherit） */
+a.m2012-link-inherit {
+  text-decoration: none;
+}
+
+/* テキストリンク（ui-link） */
+.m2012-surface-bar a.m2012-link {
+  color: var(--m2012-bar-link-color);
+  font-weight: bold;
+}
+.m2012-surface-bar a.m2012-link:visited {
+  color: var(--m2012-bar-link-visited-color);
+}
+.m2012-surface-bar a.m2012-link:hover {
+  color: var(--m2012-bar-link-hover-color);
+}
+.m2012-surface-bar a.m2012-link:active {
+  color: var(--m2012-bar-link-active-color);
+}
+.m2012-surface-body a.m2012-link {
+  color: var(--m2012-body-link-color);
+  font-weight: bold;
+}
+.m2012-surface-body a.m2012-link:visited {
+  color: var(--m2012-body-link-visited-color);
+}
+.m2012-surface-body a.m2012-link:hover {
+  color: var(--m2012-body-link-hover-color);
+}
+.m2012-surface-body a.m2012-link:active {
+  color: var(--m2012-body-link-active-color);
+}
+
+/* ===================================================================
+ * フォーカス（ui-focus）
+ * jQuery Mobile は JS で ui-focus を付けていたが、ここでは :focus-visible で代用する。
+ * 中のリンクにフォーカスがある場合も外側の btn に表示する。
+ * =================================================================== */
+.m2012-clickable:focus-visible,
+.m2012-clickable:has(:focus-visible),
+.m2012-focus {
+  z-index: 1;
+  outline: 0;
+  box-shadow:
+    inset 0px 0px 3px var(--m2012-focus-color),
+    0px 0px 9px var(--m2012-focus-color);
+}
+.m2012-clickable :focus-visible {
+  outline: 0;
+}
+
+/* ===================================================================
+ * 角丸（ui-corner-* / ui-btn-corner-*）
+ * =================================================================== */
+.m2012-corner-all {
+  border-radius: var(--m2012-radius-block);
+}
+.m2012-corner-top {
+  border-top-left-radius: var(--m2012-radius-block);
+  border-top-right-radius: var(--m2012-radius-block);
+}
+.m2012-corner-bottom {
+  border-bottom-left-radius: var(--m2012-radius-block);
+  border-bottom-right-radius: var(--m2012-radius-block);
+}
+.m2012-corner-left {
+  border-top-left-radius: var(--m2012-radius-block);
+  border-bottom-left-radius: var(--m2012-radius-block);
+}
+.m2012-corner-right {
+  border-top-right-radius: var(--m2012-radius-block);
+  border-bottom-right-radius: var(--m2012-radius-block);
+}
+.m2012-corner-none {
+  border-radius: 0;
+}
+
+.m2012-btn-corner-all {
+  border-radius: var(--m2012-radius-btn);
+}
+.m2012-btn-corner-top {
+  border-top-left-radius: var(--m2012-radius-btn);
+  border-top-right-radius: var(--m2012-radius-btn);
+}
+.m2012-btn-corner-bottom {
+  border-bottom-left-radius: var(--m2012-radius-btn);
+  border-bottom-right-radius: var(--m2012-radius-btn);
+}
+.m2012-btn-corner-left {
+  border-top-left-radius: var(--m2012-radius-btn);
+  border-bottom-left-radius: var(--m2012-radius-btn);
+}
+.m2012-btn-corner-right {
+  border-top-right-radius: var(--m2012-radius-btn);
+  border-bottom-right-radius: var(--m2012-radius-btn);
+}
+
+/* 角丸の外にグラデーションがはみ出さないようにする */
+[class*="m2012-corner-"],
+[class*="m2012-btn-corner-"] {
+  background-clip: padding-box;
+}
+
+/* ===================================================================
+ * 影（ui-shadow / ui-shadow-inset / ui-overlay-shadow）
+ * =================================================================== */
+.m2012-shadow {
+  box-shadow: var(--m2012-box-shadow);
+}
+.m2012-shadow-inset {
+  box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+.m2012-overlay-shadow {
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* ===================================================================
+ * その他
+ * =================================================================== */
+
+/* 無効状態（ui-disabled） */
+.m2012-disabled {
+  opacity: 0.3;
+}
+.m2012-disabled,
+.m2012-disabled a {
+  cursor: default !important;
+  pointer-events: none;
+}
+
+/* 見た目は隠し、スクリーンリーダーには読ませる（ui-hidden-accessible） */
+.m2012-hidden-accessible {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

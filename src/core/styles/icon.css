@@ -1,0 +1,75 @@
+/*! Icon sprites from jQuery Mobile 1.2.0 | Copyright 2012 jQuery Foundation and other contributors | MIT License | https://jquery.org/license */
+
+/*
+ * アイコン（ui-icon）
+ *
+ * jQuery Mobile 1.2.0 の PNG スプライトをそのまま使う。
+ * 通常は 18px のスプライト、高解像度の画面では 36px のスプライトを半分のサイズで表示する。
+ */
+.m2012-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 18px;
+  height: 18px;
+  background-color: var(--m2012-icon-disc);
+  background-image: url("../assets/icons-18-white.png");
+  background-repeat: no-repeat;
+  border-radius: 9px;
+}
+
+/* 黒いアイコン + 白いディスク（ui-icon-alt） */
+.m2012-icon-alt {
+  background-color: rgba(255, 255, 255, 0.3);
+  background-image: url("../assets/icons-18-black.png");
+}
+
+/* アイコン下の白い影（ui-icon-shadow） */
+.m2012-icon-shadow {
+  box-shadow: var(--m2012-icon-shadow);
+}
+
+@media (min-resolution: 1.5dppx) {
+  .m2012-icon {
+    background-image: url("../assets/icons-36-white.png");
+    background-size: 776px 18px;
+  }
+  .m2012-icon-alt {
+    background-image: url("../assets/icons-36-black.png");
+  }
+}
+
+/* スプライト上の位置 */
+.m2012-icon-plus { background-position: 0 50%; }
+.m2012-icon-minus { background-position: -36px 50%; }
+.m2012-icon-delete { background-position: -72px 50%; }
+.m2012-icon-arrow-r { background-position: -108px 50%; }
+.m2012-icon-arrow-l { background-position: -144px 50%; }
+.m2012-icon-arrow-u { background-position: -180px 50%; }
+.m2012-icon-arrow-d { background-position: -216px 50%; }
+.m2012-icon-check { background-position: -252px 50%; }
+.m2012-icon-gear { background-position: -288px 50%; }
+.m2012-icon-refresh { background-position: -324px 50%; }
+.m2012-icon-forward { background-position: -360px 50%; }
+.m2012-icon-back { background-position: -396px 50%; }
+.m2012-icon-grid { background-position: -432px 50%; }
+.m2012-icon-star { background-position: -468px 50%; }
+.m2012-icon-alert { background-position: -504px 50%; }
+.m2012-icon-info { background-position: -540px 50%; }
+.m2012-icon-home { background-position: -576px 50%; }
+.m2012-icon-search { background-position: -612px 50%; }
+.m2012-icon-checkbox-on { background-position: -648px 50%; }
+.m2012-icon-checkbox-off { background-position: -684px 50%; }
+.m2012-icon-radio-on { background-position: -720px 50%; }
+.m2012-icon-radio-off { background-position: -756px 50%; }
+
+/* チェックボックス / ラジオの OFF はディスクなし */
+.m2012-icon-checkbox-off,
+.m2012-icon-radio-off {
+  background-color: transparent;
+}
+
+/* 読み込み中のスピナー（ui-icon-loading）。Loader コンポーネントで使う */
+.m2012-icon-loading {
+  background: url("../assets/ajax-loader.gif");
+  background-size: 46px 46px;
+}

@@ -1,0 +1,261 @@
+/*
+ * テーマトークン
+ *
+ * 値は jQuery Mobile 1.2.0 のデフォルトテーマ（jquery.mobile.theme.css）から転記したもの。
+ *
+ * swatch は data-m2012-theme="a"〜"e" 属性で切り替える。属性を付けた要素の子孫は
+ * CSS 変数を継承するので、jQuery Mobile と同じく親のテーマを引き継ぐ。
+ * どこにも指定がない場合は swatch C（:root）になる。
+ *
+ * 各 swatch が定義する変数:
+ *   --m2012-bar-*        ツールバー・リストの区切りなど（ui-bar-X）
+ *   --m2012-body-*       コンテンツ領域（ui-body-X）
+ *   --m2012-btn-up-*     ボタンの通常状態（ui-btn-up-X）
+ *   --m2012-btn-hover-*  ボタンのホバー状態（ui-btn-hover-X）
+ *   --m2012-btn-down-*   ボタンの押下状態（ui-btn-down-X）
+ */
+
+/* 全 swatch 共通 */
+:root {
+  --m2012-font-family: Helvetica, Arial, sans-serif;
+  --m2012-radius-block: 0.6em;
+  --m2012-radius-btn: 1em;
+  --m2012-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+  --m2012-icon-disc: rgba(0, 0, 0, 0.4);
+  --m2012-icon-shadow: 0px 1px 0 rgba(255, 255, 255, 0.4);
+  --m2012-focus-color: #387bbe;
+
+  /* active 状態（ui-btn-active） */
+  --m2012-active-border-color: #2373a5;
+  --m2012-active-bg: #5393c5;
+  --m2012-active-bg-start: #5393c5;
+  --m2012-active-bg-end: #6facd5;
+  --m2012-active-color: #fff;
+  --m2012-active-text-shadow: 0 1px 1px #3373a5;
+}
+
+/* swatch A */
+[data-m2012-theme="a"] {
+  --m2012-bar-border-color: #333;
+  --m2012-bar-bg: #111;
+  --m2012-bar-bg-start: #3c3c3c;
+  --m2012-bar-bg-end: #111;
+  --m2012-bar-color: #fff;
+  --m2012-bar-text-shadow: 0 -1px 1px #000;
+  --m2012-bar-link-color: #7cc4e7;
+  --m2012-bar-link-visited-color: #2489ce;
+  --m2012-bar-link-hover-color: #2489ce;
+  --m2012-bar-link-active-color: #2489ce;
+  --m2012-body-border-color: #444;
+  --m2012-body-bg: #222;
+  --m2012-body-bg-start: #444;
+  --m2012-body-bg-end: #222;
+  --m2012-body-color: #fff;
+  --m2012-body-text-shadow: 0 1px 1px #111;
+  --m2012-body-link-color: #2489ce;
+  --m2012-body-link-visited-color: #2489ce;
+  --m2012-body-link-hover-color: #2489ce;
+  --m2012-body-link-active-color: #2489ce;
+  --m2012-btn-up-border-color: #111;
+  --m2012-btn-up-bg: #333;
+  --m2012-btn-up-bg-start: #444;
+  --m2012-btn-up-bg-end: #2d2d2d;
+  --m2012-btn-up-color: #fff;
+  --m2012-btn-up-link-color: #fff;
+  --m2012-btn-up-text-shadow: 0 1px 1px #111;
+  --m2012-btn-hover-border-color: #000;
+  --m2012-btn-hover-bg: #444;
+  --m2012-btn-hover-bg-start: #555;
+  --m2012-btn-hover-bg-end: #383838;
+  --m2012-btn-hover-color: #fff;
+  --m2012-btn-hover-link-color: #fff;
+  --m2012-btn-hover-text-shadow: 0 1px 1px #111;
+  --m2012-btn-down-border-color: #000;
+  --m2012-btn-down-bg: #222;
+  --m2012-btn-down-bg-start: #202020;
+  --m2012-btn-down-bg-end: #2c2c2c;
+  --m2012-btn-down-color: #fff;
+  --m2012-btn-down-link-color: #fff;
+  --m2012-btn-down-text-shadow: 0 1px 1px #111;
+}
+
+/* swatch B */
+[data-m2012-theme="b"] {
+  --m2012-bar-border-color: #456f9a;
+  --m2012-bar-bg: #5e87b0;
+  --m2012-bar-bg-start: #6facd5;
+  --m2012-bar-bg-end: #497bae;
+  --m2012-bar-color: #fff;
+  --m2012-bar-text-shadow: 0 1px 1px #3e6790;
+  --m2012-bar-link-color: #ddf0f8;
+  --m2012-bar-link-visited-color: #ddf0f8;
+  --m2012-bar-link-hover-color: #ddf0f8;
+  --m2012-bar-link-active-color: #ddf0f8;
+  --m2012-body-border-color: #999;
+  --m2012-body-bg: #f3f3f3;
+  --m2012-body-bg-start: #ddd;
+  --m2012-body-bg-end: #ccc;
+  --m2012-body-color: #222;
+  --m2012-body-text-shadow: 0 1px 0 #fff;
+  --m2012-body-link-color: #2489ce;
+  --m2012-body-link-visited-color: #2489ce;
+  --m2012-body-link-hover-color: #2489ce;
+  --m2012-body-link-active-color: #2489ce;
+  --m2012-btn-up-border-color: #044062;
+  --m2012-btn-up-bg: #396b9e;
+  --m2012-btn-up-bg-start: #5f9cc5;
+  --m2012-btn-up-bg-end: #396b9e;
+  --m2012-btn-up-color: #fff;
+  --m2012-btn-up-link-color: #fff;
+  --m2012-btn-up-text-shadow: 0 1px 1px #194b7e;
+  --m2012-btn-hover-border-color: #00415e;
+  --m2012-btn-hover-bg: #4b88b6;
+  --m2012-btn-hover-bg-start: #6facd5;
+  --m2012-btn-hover-bg-end: #4272a4;
+  --m2012-btn-hover-color: #fff;
+  --m2012-btn-hover-link-color: #fff;
+  --m2012-btn-hover-text-shadow: 0 1px 1px #194b7e;
+  --m2012-btn-down-border-color: #225377;
+  --m2012-btn-down-bg: #4e89c5;
+  --m2012-btn-down-bg-start: #295b8e;
+  --m2012-btn-down-bg-end: #3e79b5;
+  --m2012-btn-down-color: #fff;
+  --m2012-btn-down-link-color: #fff;
+  --m2012-btn-down-text-shadow: 0 1px 1px #194b7e;
+}
+
+/* swatch C */
+:root,
+[data-m2012-theme="c"] {
+  --m2012-bar-border-color: #b3b3b3;
+  --m2012-bar-bg: #eee;
+  --m2012-bar-bg-start: #f0f0f0;
+  --m2012-bar-bg-end: #ddd;
+  --m2012-bar-color: #3e3e3e;
+  --m2012-bar-text-shadow: 0 1px 1px #fff;
+  --m2012-bar-link-color: #7cc4e7;
+  --m2012-bar-link-visited-color: #2489ce;
+  --m2012-bar-link-hover-color: #2489ce;
+  --m2012-bar-link-active-color: #2489ce;
+  --m2012-body-border-color: #aaa;
+  --m2012-body-bg: #f9f9f9;
+  --m2012-body-bg-start: #f9f9f9;
+  --m2012-body-bg-end: #eee;
+  --m2012-body-color: #333;
+  --m2012-body-text-shadow: 0 1px 0 #fff;
+  --m2012-body-link-color: #2489ce;
+  --m2012-body-link-visited-color: #2489ce;
+  --m2012-body-link-hover-color: #2489ce;
+  --m2012-body-link-active-color: #2489ce;
+  --m2012-btn-up-border-color: #ccc;
+  --m2012-btn-up-bg: #eee;
+  --m2012-btn-up-bg-start: #fff;
+  --m2012-btn-up-bg-end: #f1f1f1;
+  --m2012-btn-up-color: #222;
+  --m2012-btn-up-link-color: #2f3e46;
+  --m2012-btn-up-text-shadow: 0 1px 0 #fff;
+  --m2012-btn-hover-border-color: #bbb;
+  --m2012-btn-hover-bg: #dfdfdf;
+  --m2012-btn-hover-bg-start: #f6f6f6;
+  --m2012-btn-hover-bg-end: #e0e0e0;
+  --m2012-btn-hover-color: #222;
+  --m2012-btn-hover-link-color: #2f3e46;
+  --m2012-btn-hover-text-shadow: 0 1px 0 #fff;
+  --m2012-btn-down-border-color: #bbb;
+  --m2012-btn-down-bg: #d6d6d6;
+  --m2012-btn-down-bg-start: #d0d0d0;
+  --m2012-btn-down-bg-end: #dfdfdf;
+  --m2012-btn-down-color: #222;
+  --m2012-btn-down-link-color: #2f3e46;
+  --m2012-btn-down-text-shadow: 0 1px 0 #fff;
+}
+
+/* swatch D */
+[data-m2012-theme="d"] {
+  --m2012-bar-border-color: #bbb;
+  --m2012-bar-bg: #bbb;
+  --m2012-bar-bg-start: #ddd;
+  --m2012-bar-bg-end: #bbb;
+  --m2012-bar-color: #333;
+  --m2012-bar-text-shadow: 0 1px 0 #eee;
+  --m2012-bar-link-color: #2489ce;
+  --m2012-bar-link-visited-color: #2489ce;
+  --m2012-bar-link-hover-color: #2489ce;
+  --m2012-bar-link-active-color: #2489ce;
+  --m2012-body-border-color: #bbb;
+  --m2012-body-bg: #fff;
+  --m2012-body-bg-start: #fff;
+  --m2012-body-bg-end: #fff;
+  --m2012-body-color: #333;
+  --m2012-body-text-shadow: 0 1px 0 #fff;
+  --m2012-body-link-color: #2489ce;
+  --m2012-body-link-visited-color: #2489ce;
+  --m2012-body-link-hover-color: #2489ce;
+  --m2012-body-link-active-color: #2489ce;
+  --m2012-btn-up-border-color: #bbb;
+  --m2012-btn-up-bg: #fff;
+  --m2012-btn-up-bg-start: #fafafa;
+  --m2012-btn-up-bg-end: #f6f6f6;
+  --m2012-btn-up-color: #333;
+  --m2012-btn-up-link-color: #333;
+  --m2012-btn-up-text-shadow: 0 1px 0 #fff;
+  --m2012-btn-hover-border-color: #aaa;
+  --m2012-btn-hover-bg: #eee;
+  --m2012-btn-hover-bg-start: #eee;
+  --m2012-btn-hover-bg-end: #fff;
+  --m2012-btn-hover-color: #333;
+  --m2012-btn-hover-link-color: #333;
+  --m2012-btn-hover-text-shadow: 0 1px 0 #fff;
+  --m2012-btn-down-border-color: #aaa;
+  --m2012-btn-down-bg: #eee;
+  --m2012-btn-down-bg-start: #e5e5e5;
+  --m2012-btn-down-bg-end: #f2f2f2;
+  --m2012-btn-down-color: #333;
+  --m2012-btn-down-link-color: #333;
+  --m2012-btn-down-text-shadow: 0 1px 0 #fff;
+}
+
+/* swatch E */
+[data-m2012-theme="e"] {
+  --m2012-bar-border-color: #f7c942;
+  --m2012-bar-bg: #fadb4e;
+  --m2012-bar-bg-start: #fceda7;
+  --m2012-bar-bg-end: #fbef7e;
+  --m2012-bar-color: #333;
+  --m2012-bar-text-shadow: 0 1px 0 #fff;
+  --m2012-bar-link-color: #2489ce;
+  --m2012-bar-link-visited-color: #2489ce;
+  --m2012-bar-link-hover-color: #2489ce;
+  --m2012-bar-link-active-color: #2489ce;
+  --m2012-body-border-color: #f7c942;
+  --m2012-body-bg: #fff9df;
+  --m2012-body-bg-start: #fffadf;
+  --m2012-body-bg-end: #fff3a5;
+  --m2012-body-color: #222;
+  --m2012-body-text-shadow: 0 1px 0 #fff;
+  --m2012-body-link-color: #2489ce;
+  --m2012-body-link-visited-color: #2489ce;
+  --m2012-body-link-hover-color: #2489ce;
+  --m2012-body-link-active-color: #2489ce;
+  --m2012-btn-up-border-color: #f4c63f;
+  --m2012-btn-up-bg: #fadb4e;
+  --m2012-btn-up-bg-start: #ffefaa;
+  --m2012-btn-up-bg-end: #ffe155;
+  --m2012-btn-up-color: #222;
+  --m2012-btn-up-link-color: #222;
+  --m2012-btn-up-text-shadow: 0 1px 0 #fff;
+  --m2012-btn-hover-border-color: #f2c43d;
+  --m2012-btn-hover-bg: #fbe26f;
+  --m2012-btn-hover-bg-start: #fff5ba;
+  --m2012-btn-hover-bg-end: #fbdd52;
+  --m2012-btn-hover-color: #111;
+  --m2012-btn-hover-link-color: #333;
+  --m2012-btn-hover-text-shadow: 0 1px 0 #fff;
+  --m2012-btn-down-border-color: #f2c43d;
+  --m2012-btn-down-bg: #fceda7;
+  --m2012-btn-down-bg-start: #f8d94c;
+  --m2012-btn-down-bg-end: #fadb4e;
+  --m2012-btn-down-color: #111;
+  --m2012-btn-down-link-color: #333;
+  --m2012-btn-down-text-shadow: 0 1px 0 #fff;
+}
