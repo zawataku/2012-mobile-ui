@@ -14,7 +14,7 @@ jQuery Mobile 1.2.0 で提供されていたコンポーネントを、React コ
 | Icon | 実装済み（jQuery Mobile 1.2.0 のアイコンスプライト 22 種） |
 | Listview | 一部実装済み（基本表示・inset・divider・count・見出し / 説明 / aside・アイコン / サムネイル・static・theme） |
 | Button / ControlGroup | 実装済み |
-| Page / Header / Footer / Navbar / Fixed toolbar | 未実装 |
+| Page / Header / Footer / Navbar / Fixed toolbar | 実装済み |
 | Grid / Collapsible / CollapsibleSet | 未実装 |
 | フォーム（TextInput / Slider / FlipSwitch / Checkbox / Radio / Select） | 未実装 |
 | Popup / Dialog / Loader | 未実装 |
@@ -100,6 +100,52 @@ jQuery Mobile 1.2.0 のデフォルトテーマの swatch `a`〜`e` を使えま
 | `legend` | `ReactNode` | グループの見出し |
 | `mini` | `boolean` | 中のボタンをまとめて小さいサイズにする |
 | `shadow` | `boolean` | グループ全体の影（既定は `false`） |
+
+### Page / Content / Header / Footer
+
+```tsx
+<Page>
+  <Header
+    title="Edit Contact"
+    left={<BackButton />}
+    right={<Button icon="check" theme="b">Save</Button>}
+  />
+  <Content>…</Content>
+  <Footer title="Footer" />
+</Page>
+```
+
+画面遷移（どの Page を表示するか）は react-router などのルーターに任せます。
+
+| コンポーネント | prop | 説明 |
+| --- | --- | --- |
+| `Page` | `theme` | swatch（既定は `c`） |
+| `Content` | `theme` | swatch（省略するとページの swatch） |
+| `Header` | `title` / `left` / `right` | タイトルと左右の要素（通常は `Button`）。`children` はタイトルの下に続く（`Navbar` など） |
+| `Footer` | `title` / `padded` | 中央のテキスト。`padded` で中身の周りに余白を付ける（ボタンを並べるとき） |
+| `Header` / `Footer` | `theme` | swatch（既定は `a`） |
+| `Header` / `Footer` | `fixed` / `fullscreen` / `tapToggle` / `transition` | 固定ツールバー（下記） |
+| `BackButton` | `onClick` | 「Back」ボタン。`onClick` を省略すると `history.back()` |
+
+#### 固定ツールバー
+
+`fixed` を付けると、スクロールしてもヘッダー・フッターが画面に残ります（`position: sticky`）。ボタンやリンク以外の場所をタップすると表示・非表示が切り替わります（`tapToggle={false}` で無効）。`fullscreen` を付けると、コンテンツに重ねて半透明で表示します（写真ビューアなど）。`transition` は `"slide"`（既定）・`"fade"`・`"none"` です。
+
+### Navbar
+
+```tsx
+<Navbar>
+  <NavbarItem href="#" icon="home" active>Home</NavbarItem>
+  <NavbarItem href="#" icon="search">Search</NavbarItem>
+</Navbar>
+```
+
+項目数に応じて 1〜5 列に並びます（6 個以上は 2 列）。`NavbarItem` は `Button` と同じ props を受け取ります（角丸・影・アイコン位置は Navbar が決めます）。
+
+| prop | 型 | 説明 |
+| --- | --- | --- |
+| `iconpos` | `IconPosition` | アイコンの位置（既定は `top`） |
+| `grid` | `"solo" \| "a" \| "b" \| "c" \| "d"` | 列数を指定する（省略すると項目数から決める） |
 
 ### Listview
 
