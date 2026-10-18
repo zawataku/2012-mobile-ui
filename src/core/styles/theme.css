@@ -24,6 +24,7 @@
   --m2012-icon-disc: rgba(0, 0, 0, 0.4);
   --m2012-icon-shadow: 0px 1px 0 rgba(255, 255, 255, 0.4);
   --m2012-focus-color: #387bbe;
+  --m2012-focus-shadow: inset 0px 0px 3px #387bbe, 0px 0px 9px #387bbe;
 
   /* active 状態（ui-btn-active） */
   --m2012-active-border-color: #2373a5;

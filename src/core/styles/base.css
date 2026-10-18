@@ -127,9 +127,7 @@ a.m2012-link-inherit {
 .m2012-focus {
   z-index: 1;
   outline: 0;
-  box-shadow:
-    inset 0px 0px 3px var(--m2012-focus-color),
-    0px 0px 9px var(--m2012-focus-color);
+  box-shadow: var(--m2012-focus-shadow);
 }
 .m2012-clickable :focus-visible {
   outline: 0;

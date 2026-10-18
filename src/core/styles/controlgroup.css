@@ -1,0 +1,124 @@
+/*
+ * ControlGroup（ui-controlgroup）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.controlgroup.css に準拠。
+ * jQuery Mobile は JS で先頭・末尾のボタンの角丸 class を付け替えていたが、
+ * ここでは :first-child / :last-child で同じ見た目にする。
+ *
+ * マークアップ:
+ *   <div class="m2012-controlgroup m2012-controlgroup-vertical m2012-corner-all" role="group">
+ *     <div class="m2012-controlgroup-label" role="heading">見出し</div>
+ *     <div class="m2012-controlgroup-controls">
+ *       <a class="m2012-btn …">…</a>
+ *       …
+ *     </div>
+ *   </div>
+ */
+
+.m2012-controlgroup {
+  margin: 0.5em 0;
+  padding: 0;
+}
+.m2012-controlgroup.m2012-mini {
+  margin: 0.25em 0;
+}
+
+.m2012-controlgroup-label {
+  margin: 0 0 0.4em;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+/* グループ内のボタンは角丸と影を持たない（先頭・末尾だけ角丸にする） */
+.m2012-controlgroup .m2012-btn,
+.m2012-controlgroup .m2012-btn-inner {
+  border-radius: 0;
+}
+.m2012-controlgroup .m2012-btn.m2012-shadow {
+  box-shadow: none;
+}
+.m2012-controlgroup .m2012-btn:focus-visible,
+.m2012-controlgroup .m2012-btn:has(:focus-visible) {
+  box-shadow: var(--m2012-focus-shadow);
+}
+
+/* ===================================================================
+ * 縦並び（data-type="vertical"）
+ * =================================================================== */
+.m2012-controlgroup-vertical .m2012-btn {
+  margin: 0;
+  border-bottom-width: 0;
+}
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:first-child,
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:first-child > .m2012-btn-inner {
+  border-top-left-radius: var(--m2012-radius-block);
+  border-top-right-radius: var(--m2012-radius-block);
+}
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:last-child,
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:last-child > .m2012-btn-inner {
+  border-bottom-left-radius: var(--m2012-radius-block);
+  border-bottom-right-radius: var(--m2012-radius-block);
+}
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:last-child {
+  border-bottom-width: 1px;
+}
+
+/* ===================================================================
+ * 横並び（data-type="horizontal"）
+ * =================================================================== */
+.m2012-controlgroup-horizontal .m2012-controlgroup-controls {
+  display: inline-flex;
+  flex-wrap: wrap;
+  vertical-align: middle;
+}
+.m2012-controlgroup-horizontal .m2012-btn {
+  width: auto;
+  margin: 0 -1px 0 0;
+}
+.m2012-controlgroup-horizontal .m2012-btn-inner {
+  text-align: center;
+}
+.m2012-controlgroup-horizontal.m2012-mini .m2012-btn-inner {
+  height: 16px;
+  line-height: 16px;
+}
+.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > .m2012-btn:first-child,
+.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > .m2012-btn:first-child > .m2012-btn-inner {
+  border-top-left-radius: var(--m2012-radius-block);
+  border-bottom-left-radius: var(--m2012-radius-block);
+}
+.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > .m2012-btn:last-child,
+.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > .m2012-btn:last-child > .m2012-btn-inner {
+  border-top-right-radius: var(--m2012-radius-block);
+  border-bottom-right-radius: var(--m2012-radius-block);
+}
+.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > .m2012-btn:last-child {
+  margin-right: 0;
+}
+
+/* ===================================================================
+ * アイコンのみのボタン
+ * =================================================================== */
+.m2012-controlgroup .m2012-btn-icon-notext {
+  width: auto;
+  height: auto;
+  top: auto;
+}
+.m2012-controlgroup .m2012-btn-icon-notext .m2012-btn-inner {
+  height: 20px;
+  padding: 0.6em 20px;
+}
+.m2012-controlgroup-horizontal .m2012-btn-icon-notext .m2012-btn-inner {
+  width: 18px;
+}
+.m2012-controlgroup.m2012-mini .m2012-btn-icon-notext .m2012-btn-inner {
+  height: 16px;
+  padding: 0.55em 11px 0.5em;
+}
+.m2012-controlgroup .m2012-btn-icon-notext .m2012-btn-inner .m2012-icon {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  margin: -9px -9px 0 0;
+}
