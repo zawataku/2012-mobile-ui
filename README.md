@@ -13,7 +13,7 @@ jQuery Mobile 1.2.0 で提供されていたコンポーネントを、React コ
 | --- | --- |
 | Icon | 実装済み（jQuery Mobile 1.2.0 のアイコンスプライト 22 種） |
 | Listview | 一部実装済み（基本表示・inset・divider・count・見出し / 説明 / aside・アイコン / サムネイル・static・theme） |
-| Button / ControlGroup | 未実装 |
+| Button / ControlGroup | 実装済み |
 | Page / Header / Footer / Navbar / Fixed toolbar | 未実装 |
 | Grid / Collapsible / CollapsibleSet | 未実装 |
 | フォーム（TextInput / Slider / FlipSwitch / Checkbox / Radio / Select） | 未実装 |
@@ -23,6 +23,9 @@ jQuery Mobile 1.2.0 で提供されていたコンポーネントを、React コ
 ページ遷移はアニメーションのみ提供する予定です。ルーティングは react-router などを利用してください。
 
 ## 使い方
+
+React 19 以上が必要です。
+
 
 ```tsx
 import "2012-mobile-ui/style.css";
@@ -61,6 +64,42 @@ jQuery Mobile 1.2.0 のデフォルトテーマの swatch `a`〜`e` を使えま
 | `name` | `IconName` | アイコンの種類（`arrow-r`、`home`、`search` など。一覧は `ICON_NAMES`） |
 | `shadow` | `boolean` | アイコン下の白い影 |
 | `alt` | `boolean` | 黒いアイコン + 白いディスク（明るい背景用） |
+
+### Button
+
+`href` を指定すると `<a>`、指定しなければ `<button>`（既定の `type` は `"button"`）になります。それ以外の属性（`onClick`、`ref` など）はそのまま要素に渡されます。
+
+```tsx
+<Button icon="check" theme="b" inline onClick={save}>Save</Button>
+<Button href="/settings" icon="gear" iconpos="notext">Settings</Button>
+```
+
+| prop | 型 | 説明 |
+| --- | --- | --- |
+| `icon` | `IconName` | アイコン |
+| `iconpos` | `"left" \| "right" \| "top" \| "bottom" \| "notext"` | アイコンの位置（既定は `left`）。`notext` はアイコンのみ |
+| `inline` | `boolean` | 横幅をテキストに合わせる |
+| `mini` | `boolean` | 小さいサイズ |
+| `corners` / `shadow` / `iconshadow` | `boolean` | 角丸・影・アイコンの影（既定はすべて `true`） |
+| `active` | `boolean` | active 状態（青） |
+| `disabled` | `boolean` | 無効状態 |
+| `theme` | `Theme` | swatch |
+
+### ControlGroup
+
+```tsx
+<ControlGroup type="horizontal" legend="表示">
+  <Button>リスト</Button>
+  <Button>グリッド</Button>
+</ControlGroup>
+```
+
+| prop | 型 | 説明 |
+| --- | --- | --- |
+| `type` | `"vertical" \| "horizontal"` | 並べる向き（既定は `vertical`） |
+| `legend` | `ReactNode` | グループの見出し |
+| `mini` | `boolean` | 中のボタンをまとめて小さいサイズにする |
+| `shadow` | `boolean` | グループ全体の影（既定は `false`） |
 
 ### Listview
 
