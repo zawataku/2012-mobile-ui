@@ -1,0 +1,73 @@
+/*
+ * Page / Content / Bar（ui-page / ui-content / ui-bar / ui-body）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.core.css に準拠。
+ * jQuery Mobile はページを絶対配置して切り替えていたが、ここでは表示の切り替えは利用側に任せ、
+ * ページは通常の流れの中に置く。
+ *
+ * マークアップ:
+ *   <div class="m2012-page m2012-surface-body" data-m2012-theme="c">
+ *     <div class="m2012-header …">…</div>
+ *     <div class="m2012-content" role="main">…</div>
+ *     <div class="m2012-footer …">…</div>
+ *   </div>
+ */
+
+/* ===================================================================
+ * ページ
+ * =================================================================== */
+.m2012-page {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+}
+
+/* 固定フッターがあるときは、コンテンツが短くてもフッターを画面の下端に置く */
+.m2012-page:has(> .m2012-footer-fixed:not(.m2012-footer-fullscreen)) {
+  display: flex;
+  flex-direction: column;
+}
+.m2012-page:has(> .m2012-footer-fixed:not(.m2012-footer-fullscreen)) > .m2012-content {
+  flex: 1 0 auto;
+}
+
+/* ===================================================================
+ * コンテンツ（ui-content）
+ * =================================================================== */
+.m2012-content {
+  padding: 15px;
+  overflow: visible;
+  overflow-x: hidden;
+  border-width: 0;
+}
+
+/* 全画面ツールバーのページではコンテンツの余白をなくす（写真ビューアなど） */
+.m2012-page:has(> :is(.m2012-header-fullscreen, .m2012-footer-fullscreen)) .m2012-content {
+  padding: 0;
+}
+
+/* ===================================================================
+ * 余白付きの帯（ui-bar / ui-body）
+ * =================================================================== */
+.m2012-bar,
+.m2012-body {
+  display: block;
+  position: relative;
+  clear: both;
+  padding: 0.4em 15px;
+  overflow: hidden;
+}
+.m2012-bar {
+  margin: 0;
+  font-size: 16px;
+}
+.m2012-bar :is(h1, h2, h3, h4, h5, h6) {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
