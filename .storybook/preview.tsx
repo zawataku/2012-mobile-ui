@@ -50,6 +50,8 @@ const preview: Preview = {
             minHeight: "100vh",
             boxSizing: "border-box",
             background: "#e5e5e5",
+            // Page の外でも、jQuery Mobile と同じフォントで表示する
+            fontFamily: "var(--m2012-font-family)",
           }}
         >
           <Story />
