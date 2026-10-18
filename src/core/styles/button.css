@@ -1,0 +1,198 @@
+/*
+ * Button（ui-btn）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.button.css に準拠。
+ * 色は btn surface（base.css）と swatch の変数から取る。
+ * ヘッダー・フッター・グリッド内の調整は、それぞれのコンポーネントの CSS で行う。
+ *
+ * マークアップ（<a> または <button>）:
+ *   <a class="m2012-btn m2012-surface-btn m2012-clickable m2012-shadow m2012-btn-corner-all m2012-btn-icon-left">
+ *     <span class="m2012-btn-inner m2012-btn-corner-all">
+ *       <span class="m2012-btn-text">テキスト</span>
+ *       <span class="m2012-icon m2012-icon-arrow-r m2012-icon-shadow"></span>
+ *     </span>
+ *   </a>
+ */
+
+/* ===================================================================
+ * 本体
+ * =================================================================== */
+.m2012-btn {
+  display: block;
+  position: relative;
+  margin: 0.5em 0;
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* <button> のブラウザ既定スタイルを打ち消す */
+button.m2012-btn {
+  box-sizing: border-box;
+  width: 100%;
+  font: inherit;
+  font-family: var(--m2012-font-family);
+  font-weight: bold;
+  line-height: inherit;
+  appearance: none;
+}
+button.m2012-btn.m2012-disabled {
+  cursor: default;
+}
+
+.m2012-mini {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+/* inline（ui-btn-inline）: 横幅をテキストに合わせて横に並べる */
+.m2012-btn-inline {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+button.m2012-btn-inline {
+  width: auto;
+}
+.m2012-btn-block {
+  display: block;
+}
+
+/* ===================================================================
+ * 内側（ui-btn-inner）とテキスト（ui-btn-text）
+ * =================================================================== */
+.m2012-btn-inner {
+  display: block;
+  position: relative;
+  min-width: 0.75em;
+  padding: 0.6em 20px;
+  overflow: hidden;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* 上端のハイライト */
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.m2012-btn-text {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  user-select: none;
+}
+
+/* mini（ヘッダー・フッター内と同じサイズ） */
+.m2012-mini .m2012-btn-inner {
+  padding: 0.55em 11px 0.5em;
+  font-size: 12.5px;
+}
+.m2012-fullsize .m2012-btn-inner {
+  padding: 0.6em 20px;
+  font-size: 16px;
+}
+
+/* ===================================================================
+ * アイコンのみ（ui-btn-icon-notext）
+ * =================================================================== */
+.m2012-btn-icon-notext {
+  width: 24px;
+  height: 24px;
+}
+/* jQuery Mobile と同じく 24px は枠線を含まない大きさ */
+button.m2012-btn-icon-notext {
+  box-sizing: content-box;
+  width: 24px;
+}
+.m2012-btn-icon-notext .m2012-btn-inner {
+  height: 100%;
+  padding: 0;
+}
+.m2012-btn-icon-notext .m2012-btn-inner .m2012-icon {
+  float: left;
+  margin: 2px 1px 2px 3px;
+}
+.m2012-btn-icon-notext .m2012-btn-text {
+  position: absolute;
+  left: -9999px;
+}
+.m2012-btn-icon-notext .m2012-icon {
+  display: block;
+  z-index: 0;
+}
+
+/* ===================================================================
+ * アイコンの位置
+ * =================================================================== */
+.m2012-btn-icon-left .m2012-btn-inner {
+  padding-left: 40px;
+}
+.m2012-btn-icon-right .m2012-btn-inner {
+  padding-right: 40px;
+}
+.m2012-btn-icon-top .m2012-btn-inner {
+  padding-top: 40px;
+}
+.m2012-btn-icon-bottom .m2012-btn-inner {
+  padding-bottom: 40px;
+}
+
+.m2012-mini.m2012-btn-icon-left .m2012-btn-inner,
+.m2012-mini .m2012-btn-icon-left .m2012-btn-inner {
+  padding-left: 30px;
+}
+.m2012-mini.m2012-btn-icon-right .m2012-btn-inner,
+.m2012-mini .m2012-btn-icon-right .m2012-btn-inner {
+  padding-right: 30px;
+}
+.m2012-mini.m2012-btn-icon-top .m2012-btn-inner,
+.m2012-mini .m2012-btn-icon-top .m2012-btn-inner {
+  padding-top: 30px;
+}
+.m2012-mini.m2012-btn-icon-bottom .m2012-btn-inner,
+.m2012-mini .m2012-btn-icon-bottom .m2012-btn-inner {
+  padding-bottom: 30px;
+}
+
+.m2012-btn-icon-left > .m2012-btn-inner > .m2012-icon,
+.m2012-btn-icon-right > .m2012-btn-inner > .m2012-icon {
+  position: absolute;
+  top: 50%;
+  margin-top: -9px;
+}
+.m2012-btn-icon-top .m2012-btn-inner .m2012-icon,
+.m2012-btn-icon-bottom .m2012-btn-inner .m2012-icon {
+  position: absolute;
+  left: 50%;
+  margin-left: -9px;
+}
+.m2012-btn-icon-left .m2012-icon {
+  left: 10px;
+}
+.m2012-btn-icon-right .m2012-icon {
+  right: 10px;
+}
+.m2012-btn-icon-top .m2012-icon {
+  top: 10px;
+}
+.m2012-btn-icon-bottom .m2012-icon {
+  top: auto;
+  bottom: 10px;
+}
+
+.m2012-mini.m2012-btn-icon-left .m2012-icon,
+.m2012-mini .m2012-btn-icon-left .m2012-icon {
+  left: 5px;
+}
+.m2012-mini.m2012-btn-icon-right .m2012-icon,
+.m2012-mini .m2012-btn-icon-right .m2012-icon {
+  right: 5px;
+}
+.m2012-mini.m2012-btn-icon-top .m2012-icon,
+.m2012-mini .m2012-btn-icon-top .m2012-icon {
+  top: 5px;
+}
+.m2012-mini.m2012-btn-icon-bottom .m2012-icon,
+.m2012-mini .m2012-btn-icon-bottom .m2012-icon {
+  bottom: 5px;
+}

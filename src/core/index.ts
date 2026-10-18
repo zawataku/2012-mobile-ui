@@ -4,3 +4,5 @@ export { THEMES, THEME_ATTRIBUTE } from "./theme";
 export type { Theme } from "./theme";
 export { ICON_NAMES, iconClassName } from "./icon";
 export type { IconName, IconClassOptions } from "./icon";
+export { ICON_POSITIONS, buttonClassNames } from "./button";
+export type { IconPosition, ButtonClassOptions, ButtonClassNames } from "./button";
