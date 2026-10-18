@@ -29,7 +29,11 @@
 /* <button> のブラウザ既定スタイルを打ち消す */
 button.m2012-btn {
   box-sizing: border-box;
+  /* <a> の display: block と同じく、左右の margin を除いた幅いっぱいに広げる */
   width: 100%;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: stretch;
   font: inherit;
   font-family: var(--m2012-font-family);
   font-weight: bold;

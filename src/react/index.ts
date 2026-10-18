@@ -4,6 +4,8 @@ export { Button } from "./Button";
 export type { ButtonProps, AnchorButtonProps, NativeButtonProps } from "./Button";
 export { ControlGroup } from "./ControlGroup";
 export type { ControlGroupProps } from "./ControlGroup";
+export { Grid } from "./Grid";
+export type { GridProps } from "./Grid";
 export { Page, Content } from "./Page";
 export type { PageProps, ContentProps } from "./Page";
 export { Header, Footer, BackButton } from "./Toolbar";

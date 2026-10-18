@@ -24,6 +24,12 @@
   border: 0;
 }
 
+/* グリッド内のボタンは左右に余白を取る */
+:is(.m2012-grid-solo, .m2012-grid-a, .m2012-grid-b, .m2012-grid-c, .m2012-grid-d) .m2012-btn {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
 /* solo: 1 列 */
 .m2012-grid-solo .m2012-block-a {
   display: block;
