@@ -1,0 +1,145 @@
+/*
+ * Collapsible / CollapsibleSet（ui-collapsible / ui-collapsible-set）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.collapsible.css に準拠。
+ * jQuery Mobile は JS で見出しの角丸 class を付け替えていたが、ここでは開閉状態と
+ * セット内の位置（:first-child / :last-child）から CSS で決める。
+ *
+ * マークアップ:
+ *   <div class="m2012-collapsible m2012-collapsible-inset [m2012-collapsible-collapsed]">
+ *     <h3 class="m2012-collapsible-heading [m2012-collapsible-heading-collapsed]">
+ *       <button class="m2012-collapsible-heading-toggle m2012-btn … m2012-btn-icon-left">…</button>
+ *     </h3>
+ *     <div class="m2012-collapsible-content [m2012-surface-body] [m2012-collapsible-content-collapsed]">…</div>
+ *   </div>
+ */
+
+.m2012-collapsible-inset {
+  margin: 0.5em 0;
+}
+
+/* ===================================================================
+ * 見出し
+ * =================================================================== */
+.m2012-collapsible-heading {
+  display: block;
+  position: relative;
+  margin: 0 -15px;
+  padding: 0;
+  font-size: 16px;
+}
+.m2012-collapsible-inset .m2012-collapsible-heading {
+  margin: 0;
+}
+
+.m2012-collapsible-heading .m2012-btn {
+  margin: 0;
+  text-align: left;
+  border-left-width: 0;
+  border-right-width: 0;
+}
+.m2012-collapsible-inset .m2012-collapsible-heading .m2012-btn {
+  border-left-width: 1px;
+  border-right-width: 1px;
+}
+.m2012-collapsible-collapsed + .m2012-collapsible:not(.m2012-collapsible-inset) .m2012-collapsible-heading .m2012-btn {
+  border-top-width: 0;
+}
+.m2012-collapsible-set .m2012-collapsible:not(.m2012-collapsible-inset) .m2012-collapsible-heading .m2012-btn {
+  border-top-width: 1px;
+}
+
+.m2012-collapsible-heading .m2012-btn-inner,
+.m2012-collapsible-heading .m2012-btn-icon-left .m2012-btn-inner {
+  padding-left: 40px;
+}
+.m2012-collapsible-heading .m2012-btn-icon-right .m2012-btn-inner {
+  padding-right: 40px;
+  padding-left: 12px;
+}
+.m2012-collapsible-heading .m2012-btn-icon-top .m2012-btn-inner,
+.m2012-collapsible-heading .m2012-btn-icon-bottom .m2012-btn-inner {
+  padding-right: 40px;
+  text-align: center;
+}
+
+/* ===================================================================
+ * 中身
+ * =================================================================== */
+.m2012-collapsible-content {
+  display: block;
+  margin: 0 -15px;
+  padding: 10px 15px;
+  border-left-width: 0;
+  border-right-width: 0;
+  /* body surface の上の枠線とグラデーションを外す */
+  border-top: none;
+  background-image: none;
+}
+.m2012-collapsible-inset .m2012-collapsible-content {
+  margin: 0;
+  border-left-width: 1px;
+  border-right-width: 1px;
+}
+.m2012-collapsible-content-collapsed {
+  display: none;
+}
+
+/* 中身の Listview は余白を打ち消して端まで広げる */
+.m2012-collapsible-content > .m2012-listview {
+  margin: -10px -15px;
+}
+.m2012-collapsible-content > .m2012-listview-inset {
+  margin: 0.5em 0;
+}
+
+/* ===================================================================
+ * 見出しのボタンの角丸（inset のとき）
+ * =================================================================== */
+
+/* 単独: 上下とも角丸。中身に背景があり開いているときは、見出しの下側を角丸にせず中身の下側を角丸にする */
+.m2012-collapsible-inset > .m2012-collapsible-heading :is(.m2012-btn, .m2012-btn-inner) {
+  border-radius: var(--m2012-radius-block);
+}
+.m2012-collapsible-inset:not(.m2012-collapsible-collapsed):has(> .m2012-collapsible-content.m2012-surface-body)
+  > .m2012-collapsible-heading
+  :is(.m2012-btn, .m2012-btn-inner) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* セット内: 先頭の上側と、閉じている末尾の下側だけを角丸にする */
+.m2012-collapsible-set > .m2012-collapsible-inset > .m2012-collapsible-heading :is(.m2012-btn, .m2012-btn-inner) {
+  border-radius: 0;
+}
+.m2012-collapsible-set > .m2012-collapsible-inset:first-child > .m2012-collapsible-heading :is(.m2012-btn, .m2012-btn-inner) {
+  border-top-left-radius: var(--m2012-radius-block);
+  border-top-right-radius: var(--m2012-radius-block);
+}
+.m2012-collapsible-set > .m2012-collapsible-inset.m2012-collapsible-collapsed:last-child > .m2012-collapsible-heading :is(.m2012-btn, .m2012-btn-inner) {
+  border-bottom-left-radius: var(--m2012-radius-block);
+  border-bottom-right-radius: var(--m2012-radius-block);
+}
+
+/* 開いている中身の下側（単独で背景があるとき、またはセットの末尾のとき） */
+.m2012-collapsible-inset:not(.m2012-collapsible-collapsed) > .m2012-collapsible-content.m2012-surface-body,
+.m2012-collapsible-set > .m2012-collapsible-inset:not(.m2012-collapsible-collapsed):last-child > .m2012-collapsible-content {
+  border-bottom-left-radius: var(--m2012-radius-block);
+  border-bottom-right-radius: var(--m2012-radius-block);
+}
+.m2012-collapsible-set > .m2012-collapsible-inset:not(:last-child) > .m2012-collapsible-content {
+  border-radius: 0;
+}
+
+/* ===================================================================
+ * セット
+ * =================================================================== */
+.m2012-collapsible-set {
+  margin: 0.5em 0;
+}
+.m2012-collapsible-set .m2012-collapsible {
+  margin: -1px 0 0;
+}
+.m2012-collapsible-set .m2012-collapsible:first-child {
+  margin-top: 0;
+}

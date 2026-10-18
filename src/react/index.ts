@@ -6,6 +6,8 @@ export { ControlGroup } from "./ControlGroup";
 export type { ControlGroupProps } from "./ControlGroup";
 export { Grid } from "./Grid";
 export type { GridProps } from "./Grid";
+export { Collapsible, CollapsibleSet } from "./Collapsible";
+export type { CollapsibleProps, CollapsibleSetProps } from "./Collapsible";
 export { Page, Content } from "./Page";
 export type { PageProps, ContentProps } from "./Page";
 export { Header, Footer, BackButton } from "./Toolbar";

@@ -8,6 +8,8 @@ export { ICON_POSITIONS, buttonClassNames } from "./button";
 export type { IconPosition, ButtonClassOptions, ButtonClassNames } from "./button";
 export { gridClassNames } from "./grid";
 export type { GridColumns, GridClassNames } from "./grid";
+export { collapsibleClassNames, collapsibleIcon } from "./collapsible";
+export type { CollapsibleClassOptions, CollapsibleClassNames } from "./collapsible";
 export {
   TAP_TOGGLE_IGNORE,
   HIDE_DURING_FOCUS,
