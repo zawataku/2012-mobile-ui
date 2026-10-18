@@ -1,73 +1,93 @@
-# React + TypeScript + Vite
+# 2012-mobile-ui
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+jQuery Mobile® 1.2.0 のデザインを参考にした、React 用の UI コンポーネントライブラリです（非公式）。
 
-Currently, two official plugins are available:
+jQuery Mobile 1.2.0 で提供されていたコンポーネントを、React コンポーネントとして全て再現することを目標にしています。jQuery には依存せず、見た目は CSS Modules で再現しています。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> [!NOTE]
+> 開発初期段階のため、npm には未公開です。API は今後変更される可能性があります。
 
-## React Compiler
+## コンポーネント
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| コンポーネント | 状態 |
+| --- | --- |
+| Listview | 一部実装済み（基本表示・inset・divider・count・見出し / 説明 / aside・アイコン / サムネイル・static） |
+| Button / ControlGroup | 未実装 |
+| Page / Header / Footer / Navbar / Fixed toolbar | 未実装 |
+| Grid / Collapsible / CollapsibleSet | 未実装 |
+| フォーム（TextInput / Slider / FlipSwitch / Checkbox / Radio / Select） | 未実装 |
+| Popup / Dialog / Loader | 未実装 |
+| ページ遷移アニメーション | 未実装 |
 
-## Expanding the ESLint configuration
+ページ遷移はアニメーションのみ提供する予定です。ルーティングは react-router などを利用してください。
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 使い方
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```tsx
+import { Listview, ListviewItem, ListviewDivider } from "2012-mobile-ui";
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+export const Example = () => (
+  <Listview inset>
+    <ListviewDivider count={2}>Inbox</ListviewDivider>
+    <ListviewItem
+      href="#"
+      heading="Stephen Weber"
+      desc="And then we all went to the park..."
+      aside="6:24 PM"
+      count={1}
+    />
+    <ListviewItem href="#">Toolbars</ListviewItem>
+    <ListviewItem>読み取り専用の項目</ListviewItem>
+  </Listview>
+);
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Listview
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| prop | 型 | 説明 |
+| --- | --- | --- |
+| `inset` | `boolean` | 角丸・影付きの inset 表示（`data-inset="true"` 相当） |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### ListviewItem
+
+| prop | 型 | 説明 |
+| --- | --- | --- |
+| `href` / `onClick` | `string` / `MouseEventHandler` | 指定するとクリック可能な項目になり、右矢印が付く |
+| `heading` | `ReactNode` | 見出し |
+| `desc` | `ReactNode` | 補助説明テキスト |
+| `aside` | `ReactNode` | 右寄せの補足テキスト |
+| `count` | `ReactNode` | 右側の count バブル |
+| `icon` / `iconAlt` | `string` | 左側の 16px アイコン画像 |
+| `thumb` / `thumbAlt` | `string` | 左側の 80px サムネイル画像 |
+| `arrow` | `boolean` | 右矢印の表示を明示的に切り替える |
+
+### ListviewDivider
+
+| prop | 型 | 説明 |
+| --- | --- | --- |
+| `count` | `ReactNode` | 右側の count バブル |
+
+## 開発
+
+[pnpm](https://pnpm.io/) を使います。
+
+```sh
+pnpm install
+pnpm dev      # デモページを起動
+pnpm build    # ライブラリをビルド（dist/ に出力）
+pnpm lint
 ```
+
+### 参照用ソース
+
+見た目の確認には jQuery Mobile 1.2.0 のソース（CSS・ドキュメント）を参照しています。`reference/` は Git 管理外なので、各自で配置してください。
+
+```sh
+git clone --depth 1 --branch 1.2.0 https://github.com/jquery/jquery-mobile.git reference/jquery-mobile-1.2.0
+```
+
+## 商標
+
+jQuery® および jQuery Mobile® は OpenJS Foundation の登録商標です。このプロジェクトは OpenJS Foundation および jQuery Mobile プロジェクトとは関係がなく、承認も受けていません。
+
+jQuery Mobile® is a registered trademark of the OpenJS Foundation. This project is not affiliated with or endorsed by the OpenJS Foundation.

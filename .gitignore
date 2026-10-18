@@ -15,6 +15,9 @@ dist-ssr
 # Reference material (jQuery Mobile source, not tracked)
 reference
 
+# Local planning notes
+ROADMAP.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

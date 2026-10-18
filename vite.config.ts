@@ -7,8 +7,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'JQueryMobileReact',
-      fileName: (format) => `jquery-mobile-react.${format}.js`
+      name: 'MobileUI2012',
+      fileName: (format) => `2012-mobile-ui.${format}.js`
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
