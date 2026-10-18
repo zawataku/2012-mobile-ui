@@ -89,32 +89,38 @@ a.m2012-link-inherit {
   text-decoration: none;
 }
 
-/* テキストリンク（ui-link） */
-.m2012-surface-bar a.m2012-link {
-  color: var(--m2012-bar-link-color);
+/* テキストリンク（ui-link）
+ * jQuery Mobile はページ内のボタン以外のリンクに JS で ui-link を付けていた。
+ * ここでは bar / body surface の中のリンクに自動で適用し、色は一番近い surface の swatch で決める。
+ * 利用側で上書きしやすいよう :where() で詳細度を下げている。m2012-link を付けても同じ見た目になる */
+.m2012-surface-bar {
+  --m2012-link: var(--m2012-bar-link-color);
+  --m2012-link-visited: var(--m2012-bar-link-visited-color);
+  --m2012-link-hover: var(--m2012-bar-link-hover-color);
+  --m2012-link-active: var(--m2012-bar-link-active-color);
+}
+.m2012-surface-body {
+  --m2012-link: var(--m2012-body-link-color);
+  --m2012-link-visited: var(--m2012-body-link-visited-color);
+  --m2012-link-hover: var(--m2012-body-link-hover-color);
+  --m2012-link-active: var(--m2012-body-link-active-color);
+}
+:where(.m2012-surface-bar, .m2012-surface-body) a:where(:not(.m2012-btn, .m2012-link-inherit)),
+a.m2012-link {
+  color: var(--m2012-link);
   font-weight: bold;
 }
-.m2012-surface-bar a.m2012-link:visited {
-  color: var(--m2012-bar-link-visited-color);
+:where(.m2012-surface-bar, .m2012-surface-body) a:where(:not(.m2012-btn, .m2012-link-inherit)):visited,
+a.m2012-link:visited {
+  color: var(--m2012-link-visited);
 }
-.m2012-surface-bar a.m2012-link:hover {
-  color: var(--m2012-bar-link-hover-color);
+:where(.m2012-surface-bar, .m2012-surface-body) a:where(:not(.m2012-btn, .m2012-link-inherit)):hover,
+a.m2012-link:hover {
+  color: var(--m2012-link-hover);
 }
-.m2012-surface-bar a.m2012-link:active {
-  color: var(--m2012-bar-link-active-color);
-}
-.m2012-surface-body a.m2012-link {
-  color: var(--m2012-body-link-color);
-  font-weight: bold;
-}
-.m2012-surface-body a.m2012-link:visited {
-  color: var(--m2012-body-link-visited-color);
-}
-.m2012-surface-body a.m2012-link:hover {
-  color: var(--m2012-body-link-hover-color);
-}
-.m2012-surface-body a.m2012-link:active {
-  color: var(--m2012-body-link-active-color);
+:where(.m2012-surface-bar, .m2012-surface-body) a:where(:not(.m2012-btn, .m2012-link-inherit)):active,
+a.m2012-link:active {
+  color: var(--m2012-link-active);
 }
 
 /* bar の中のボタンの影（.ui-bar-a .ui-shadow など）。
