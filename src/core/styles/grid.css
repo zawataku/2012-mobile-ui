@@ -1,0 +1,66 @@
+/*
+ * Grid（ui-grid-* / ui-block-*）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.grid.css に準拠。
+ * 古いブラウザ向けの幅の調整（49.95% など）は省いている。
+ */
+.m2012-grid-a,
+.m2012-grid-b,
+.m2012-grid-c,
+.m2012-grid-d {
+  overflow: hidden;
+}
+
+.m2012-block-a,
+.m2012-block-b,
+.m2012-block-c,
+.m2012-block-d,
+.m2012-block-e {
+  box-sizing: border-box;
+  float: left;
+  min-height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* solo: 1 列 */
+.m2012-grid-solo .m2012-block-a {
+  display: block;
+  float: none;
+}
+
+/* a: 2 列 */
+.m2012-grid-a > * {
+  width: 50%;
+  margin-right: -0.5px;
+}
+.m2012-grid-a .m2012-block-a {
+  clear: left;
+}
+
+/* b: 3 列 */
+.m2012-grid-b > * {
+  width: 33.333%;
+  margin-right: -0.5px;
+}
+.m2012-grid-b .m2012-block-a {
+  clear: left;
+}
+
+/* c: 4 列 */
+.m2012-grid-c > * {
+  width: 25%;
+  margin-right: -0.5px;
+}
+.m2012-grid-c .m2012-block-a {
+  clear: left;
+}
+
+/* d: 5 列 */
+.m2012-grid-d > * {
+  width: 20%;
+}
+.m2012-grid-d .m2012-block-a {
+  clear: left;
+}

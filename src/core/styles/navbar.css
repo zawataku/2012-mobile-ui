@@ -1,0 +1,82 @@
+/*
+ * Navbar（ui-navbar）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.navbar.css に準拠。
+ * 項目はグリッド（grid.css）で並べ、ボタンは角丸・影なしの mini にする。
+ * 古いブラウザの小数点以下の丸め対策（margin-right: -5px など）は省いている。
+ *
+ * マークアップ:
+ *   <div class="m2012-navbar m2012-mini" role="navigation">
+ *     <ul class="m2012-grid-b">
+ *       <li class="m2012-block-a"><a class="m2012-btn m2012-btn-inline …">…</a></li>
+ *       …
+ *     </ul>
+ *   </div>
+ */
+.m2012-navbar {
+  max-width: 100%;
+  /* 末尾のボタンの margin-right: -1px で横スクロールが出ないようにする */
+  overflow-x: clip;
+}
+.m2012-navbar.m2012-mini {
+  margin: 0;
+}
+
+.m2012-navbar ul {
+  display: flow-root;
+  position: relative;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  list-style: none;
+  border: 0;
+}
+
+/* ボタンを項目の幅いっぱいに広げる（<button> は display: block だけでは広がらないため flex で伸ばす） */
+.m2012-navbar li {
+  display: flex;
+  list-style: none;
+}
+.m2012-navbar li .m2012-btn {
+  display: block;
+  flex: 1 1 auto;
+  width: auto;
+  margin: 0 -1px 0 0;
+  text-align: center;
+  border-right-width: 0;
+}
+.m2012-navbar li .m2012-btn-icon-right .m2012-icon {
+  right: 6px;
+}
+
+/* ヘッダー・フッターの外では、末尾のボタンに右の枠線を付ける */
+.m2012-navbar li:last-child .m2012-btn,
+.m2012-navbar .m2012-grid-duo .m2012-block-b .m2012-btn {
+  margin-right: 0;
+  border-right-width: 1px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-navbar li:last-child .m2012-btn,
+:is(.m2012-header, .m2012-footer) .m2012-navbar .m2012-grid-duo .m2012-block-b .m2012-btn {
+  margin-right: -1px;
+  border-right-width: 0;
+}
+.m2012-navbar .m2012-grid-duo li.m2012-block-a:last-child .m2012-btn {
+  margin-right: -1px;
+  border-right-width: 1px;
+}
+:is(.m2012-header, .m2012-footer) .m2012-navbar li .m2012-btn {
+  border-top-width: 0;
+  border-bottom-width: 0;
+}
+
+.m2012-navbar li .m2012-btn .m2012-btn-inner {
+  padding-top: 0.7em;
+  padding-bottom: 0.8em;
+}
+.m2012-navbar li .m2012-btn-icon-top .m2012-btn-inner {
+  padding-top: 30px;
+}
+.m2012-navbar li .m2012-btn-icon-bottom .m2012-btn-inner {
+  padding-bottom: 30px;
+}
