@@ -1,0 +1,216 @@
+/*
+ * Listview（ui-listview）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.listview.css に準拠。
+ * 色は surface（base.css）と swatch の変数から取る。
+ *
+ * 既定の swatch（jQuery Mobile と同じ）:
+ *   - 項目       = 親から継承（指定がなければ C）
+ *   - 区切り     = B
+ *   - count      = C
+ *
+ * マークアップ:
+ *   <ul class="m2012-listview [m2012-listview-inset m2012-corner-all m2012-shadow]">
+ *     <li class="m2012-li m2012-li-divider m2012-surface-bar" data-m2012-theme="b">…</li>
+ *     <li class="m2012-li m2012-li-link m2012-surface-btn m2012-clickable [m2012-li-has-arrow]">
+ *       <a class="m2012-li-inner m2012-link-inherit" href="…">…</a>
+ *       <span class="m2012-icon m2012-icon-arrow-r m2012-icon-shadow m2012-li-arrow"></span>
+ *     </li>
+ *     <li class="m2012-li m2012-li-static m2012-surface-btn"><div class="m2012-li-inner">…</div></li>
+ *   </ul>
+ */
+
+/* ===================================================================
+ * コンテナ
+ * =================================================================== */
+.m2012-listview {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--m2012-font-family);
+  font-size: 16px;
+}
+
+.m2012-listview-inset {
+  margin: 1em 0;
+}
+
+/* ===================================================================
+ * 項目（ui-li）
+ * =================================================================== */
+.m2012-listview > .m2012-li {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  list-style: none;
+  text-align: left;
+  border-width: 0;
+  border-top-width: 1px;
+}
+
+/* 最後の項目は下ボーダーを持つ（ui-li-last） */
+.m2012-listview > .m2012-li:last-child {
+  border-bottom-width: 1px;
+}
+
+/* inset の項目は左右ボーダーと、先頭・末尾の角丸を持つ */
+.m2012-listview-inset > .m2012-li {
+  border-left-width: 1px;
+  border-right-width: 1px;
+}
+.m2012-listview-inset > .m2012-li:first-child {
+  overflow: hidden;
+  border-top-left-radius: var(--m2012-radius-block);
+  border-top-right-radius: var(--m2012-radius-block);
+}
+.m2012-listview-inset > .m2012-li:last-child {
+  overflow: hidden;
+  border-bottom-left-radius: var(--m2012-radius-block);
+  border-bottom-right-radius: var(--m2012-radius-block);
+}
+
+/* クリックできない項目（ui-li-static）は btn surface からグラデーションを外す */
+.m2012-listview > .m2012-li-static {
+  background-image: none;
+}
+
+/* ===================================================================
+ * 項目の内側（a.ui-link-inherit / 静的項目は div）
+ * =================================================================== */
+.m2012-li-inner {
+  display: block;
+  position: relative;
+  padding: 0.7em 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ボタン内側の上端のハイライト（ui-btn-inner） */
+.m2012-li-link > .m2012-li-inner {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 見出し・説明・サムネイルを含む項目は折り返す */
+.m2012-li-multiline > .m2012-li-inner {
+  white-space: normal;
+}
+
+/* 右側の余白: 矢印 / count / 矢印 + count（ui-li-has-*） */
+.m2012-li-has-arrow > .m2012-li-inner {
+  padding-right: 40px;
+}
+.m2012-li-has-count > .m2012-li-inner {
+  padding-right: 45px;
+}
+.m2012-li-has-arrow.m2012-li-has-count > .m2012-li-inner {
+  padding-right: 75px;
+}
+
+/* 左側の余白: アイコン / サムネイル */
+.m2012-li-has-icon > .m2012-li-inner {
+  min-height: 20px;
+  padding-left: 40px;
+}
+.m2012-li-has-thumb > .m2012-li-inner {
+  min-height: 60px;
+  padding-left: 100px;
+}
+
+/* ===================================================================
+ * 見出し / 説明 / 補足（aside）
+ * =================================================================== */
+.m2012-li-heading {
+  display: block;
+  margin: 0.6em 0;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.m2012-li-desc {
+  display: block;
+  margin: -0.5em 0 0.6em;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.m2012-li-aside {
+  float: right;
+  width: 50%;
+  margin: 0.3em 0;
+  font-size: 14px;
+  text-align: right;
+}
+@media all and (min-width: 480px) {
+  .m2012-li-aside {
+    width: 45%;
+  }
+}
+
+/* ===================================================================
+ * アイコン（16px）/ サムネイル（80px）
+ * =================================================================== */
+.m2012-li-icon {
+  position: absolute;
+  left: 10px;
+  top: 0.9em;
+  max-width: 16px;
+  max-height: 16px;
+}
+.m2012-li-thumb {
+  position: absolute;
+  left: 1px;
+  top: 0;
+  max-width: 80px;
+  max-height: 80px;
+}
+
+/* ===================================================================
+ * count バブル（ui-li-count）。btn surface + ボタンの角丸と組み合わせる
+ * =================================================================== */
+.m2012-li-count {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  min-width: 0.6em;
+  margin-top: -0.9em;
+  padding: 0.2em 0.5em;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+}
+.m2012-li-has-arrow > .m2012-li-count {
+  right: 40px;
+}
+
+/* ===================================================================
+ * 右矢印（ui-icon-arrow-r の配置）
+ * =================================================================== */
+.m2012-li-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -9px;
+}
+
+/* ===================================================================
+ * 区切り（ui-li-divider）。bar surface と組み合わせる
+ * =================================================================== */
+.m2012-listview > .m2012-li-divider {
+  padding: 0.5em 15px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: default;
+}
+.m2012-listview > .m2012-li-divider.m2012-li-has-count {
+  padding-right: 45px;
+}
+.m2012-li-divider > .m2012-li-count {
+  margin-top: -0.95em;
+}
