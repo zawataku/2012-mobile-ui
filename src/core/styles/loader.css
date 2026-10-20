@@ -1,0 +1,79 @@
+/*
+ * Loader（ui-loader）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.core.css の loading screen に準拠。
+ * 画面の中央に固定して表示する。
+ *
+ * マークアップ:
+ *   <div class="m2012-loader m2012-loader-verbose m2012-surface-body m2012-corner-all" data-m2012-theme="a" role="status">
+ *     <span class="m2012-icon m2012-icon-loading"></span>
+ *     <span class="m2012-loader-text">loading</span>
+ *   </div>
+ */
+
+.m2012-loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 9999999;
+  border: 0;
+}
+
+/* テキストなし: 薄いスピナーだけ */
+.m2012-loader-default {
+  width: 46px;
+  height: 46px;
+  margin-top: -23px;
+  margin-left: -23px;
+  opacity: 0.18;
+  background: none;
+}
+.m2012-loader-default .m2012-loader-text {
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  font-size: 0;
+}
+
+/* テキスト付き */
+.m2012-loader-verbose {
+  width: 200px;
+  height: auto;
+  margin-top: -43px;
+  margin-left: -110px;
+  padding: 10px;
+  opacity: 0.88;
+  box-shadow: 0 1px 1px -1px #fff;
+}
+.m2012-loader-verbose .m2012-loader-text {
+  display: block;
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* スピナー（ajax-loader.gif）を黒い円の上に置く */
+.m2012-loader .m2012-icon {
+  display: block;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 1px;
+  background-color: #000;
+  border-radius: 36px;
+}
+.m2012-loader-verbose .m2012-icon {
+  margin: 0 auto 10px;
+  opacity: 0.75;
+}
+
+/* テキストのみ */
+.m2012-loader-textonly {
+  margin-left: -115px;
+  padding: 15px;
+}
+.m2012-loader-textonly .m2012-icon {
+  display: none;
+}

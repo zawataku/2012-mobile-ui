@@ -30,6 +30,8 @@ export type {
 } from "./Form";
 export { Popup, Dialog } from "./Popup";
 export type { PopupProps, DialogProps, ModalTransition } from "./Popup";
+export { Loader } from "./Loader";
+export type { LoaderProps } from "./Loader";
 export { Page, Content } from "./Page";
 export type { PageProps, ContentProps } from "./Page";
 export { Header, Footer, BackButton } from "./Toolbar";
