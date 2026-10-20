@@ -10,9 +10,12 @@ export type ToolbarTransition = "slide" | "fade" | "none";
  */
 export type ToolbarPhase = "visible" | "hiding" | "hidden" | "showing";
 
-/** タップしてもツールバーの表示を切り替えない要素（tapToggleBlacklist） */
+/**
+ * タップしてもツールバーの表示を切り替えない要素（tapToggleBlacklist）。
+ * jQuery Mobile ではチェックボックスのラベルとスライダーがクリックの伝播を止めていたため、label と .m2012-slider も含める
+ */
 export const TAP_TOGGLE_IGNORE =
-  "a, button, input, select, textarea, .m2012-header-fixed, .m2012-footer-fixed, .m2012-popup";
+  "a, button, input, select, textarea, label, .m2012-slider, .m2012-header-fixed, .m2012-footer-fixed, .m2012-popup";
 
 /** フォーカス中はツールバーを隠す要素（hideDuringFocus）。ソフトウェアキーボードと重ならないようにする */
 export const HIDE_DURING_FOCUS = "input, textarea, select";
