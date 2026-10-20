@@ -3,7 +3,8 @@
  *
  * 値は jQuery Mobile 1.2.0 の jquery.mobile.transition*.css に準拠。
  * keyframes 名は他の CSS と衝突しないよう m2012- を付けている。
- * 今は固定ツールバーで使う fade / slideup / slidedown のみ。ページ遷移用のものは Phase 7 で追加する。
+ * 今は固定ツールバー・ポップアップ・ダイアログで使う fade / pop / slideup / slidedown のみ。
+ * ページ遷移用のものは Phase 7 で追加する。
  */
 .m2012-in {
   animation-duration: 350ms;
@@ -33,6 +34,37 @@
   opacity: 1;
   animation-name: m2012-fadein;
   animation-duration: 225ms;
+}
+
+/* pop（拡大しながら現れる） */
+@keyframes m2012-popin {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes m2012-popout {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.8); opacity: 0; }
+}
+.m2012-pop {
+  transform-origin: 50% 50%;
+}
+.m2012-pop.m2012-in {
+  transform: scale(1);
+  opacity: 1;
+  animation-name: m2012-popin;
+  animation-duration: 350ms;
+}
+.m2012-pop.m2012-out {
+  opacity: 0;
+  animation-name: m2012-fadeout;
+  animation-duration: 100ms;
+}
+.m2012-pop.m2012-in.m2012-reverse {
+  animation-name: m2012-fadein;
+}
+.m2012-pop.m2012-out.m2012-reverse {
+  transform: scale(0.8);
+  animation-name: m2012-popout;
 }
 
 /* slideup（下から出てくる） */

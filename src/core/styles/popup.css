@@ -1,0 +1,152 @@
+/*
+ * Popup（ui-popup / ui-popup-container / ui-popup-screen）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.popup.css に準拠。
+ * jQuery Mobile はポップアップをページの末尾に移して絶対配置していたが、ここではネイティブの <dialog> を
+ * 宣言した場所のまま最前面（top layer）に出す。宣言した場所の swatch をそのまま受け継ぐ。
+ *
+ * マークアップ:
+ *   <dialog class="m2012-popup-container" style="left: …; top: …">
+ *     <div class="m2012-popup-screen [m2012-surface-overlay] m2012-in" data-m2012-theme="a"></div>
+ *     <div class="m2012-popup m2012-surface-body m2012-corner-all m2012-overlay-shadow [m2012-pop m2012-in]">…</div>
+ *   </dialog>
+ */
+
+/* ===================================================================
+ * 入れ物（<dialog> のブラウザ既定スタイルを打ち消す）
+ * =================================================================== */
+dialog.m2012-popup-container {
+  position: fixed;
+  inset: auto;
+  z-index: 1100;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+dialog.m2012-popup-container::backdrop {
+  background: transparent;
+}
+
+/* ===================================================================
+ * 背景（ui-popup-screen）。タップすると閉じる
+ * =================================================================== */
+.m2012-popup-screen {
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+}
+.m2012-popup-screen.m2012-in {
+  opacity: 0.5;
+}
+.m2012-popup-screen.m2012-out {
+  opacity: 0;
+}
+
+/* ===================================================================
+ * ポップアップ本体
+ * =================================================================== */
+.m2012-popup {
+  position: relative;
+}
+.m2012-popup.m2012-content,
+.m2012-popup .m2012-content {
+  overflow: visible;
+}
+
+.m2012-popup > :is(p, h1, h2, h3, h4, h5, h6) {
+  margin: 0.5em 7px;
+}
+.m2012-popup > span {
+  display: block;
+  margin: 0.5em 7px;
+}
+.m2012-popup .m2012-title {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 16px;
+  font-weight: bold;
+}
+.m2012-popup-container .m2012-content > :is(p, h1, h2, h3, h4, h5, h6) {
+  margin: 0.5em 0;
+}
+.m2012-popup-container .m2012-content > span {
+  margin: 0;
+}
+.m2012-popup-container .m2012-content > :is(p, h1, h2, h3, h4, h5, h6):first-child {
+  margin-top: 0;
+}
+.m2012-popup-container .m2012-content > :is(p, h1, h2, h3, h4, h5, h6):last-child {
+  margin-bottom: 0;
+}
+
+.m2012-popup > img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+}
+.m2012-popup iframe {
+  vertical-align: middle;
+}
+
+/* ポップアップの中では、ラベルと入力欄を横に並べない */
+@media all and (min-width: 450px) {
+  .m2012-popup .m2012-field-contain :is(.m2012-label, .m2012-controlgroup-label) {
+    display: block;
+    width: auto;
+    margin: 0 0 0.3em;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.4;
+  }
+  .m2012-popup .m2012-field-contain :is(.m2012-controlgroup-controls, .m2012-select),
+  .m2012-popup .m2012-field-contain > :is(input.m2012-input-text, textarea.m2012-input-text, .m2012-input-search) {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* 角の閉じるボタン（ui-btn-left / ui-btn-right） */
+.m2012-popup > :is(.m2012-btn-left, .m2012-btn-right) {
+  position: absolute;
+  top: -9px;
+  z-index: 1101;
+  margin: 0;
+}
+.m2012-popup > .m2012-btn-left {
+  left: -9px;
+}
+.m2012-popup > .m2012-btn-right {
+  right: -9px;
+}
+
+/* 角丸のポップアップの中のヘッダー・コンテンツ・フッターは、外側の角丸に合わせる */
+.m2012-popup.m2012-corner-all > .m2012-header,
+.m2012-popup.m2012-corner-all > .m2012-content:first-child {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.m2012-popup.m2012-corner-all > .m2012-content,
+.m2012-popup.m2012-corner-all > .m2012-footer,
+.m2012-popup.m2012-corner-all > .m2012-header:nth-child(n):last-child {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+.m2012-popup.m2012-corner-all > :is(.m2012-content, .m2012-header):nth-child(2) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.m2012-popup.m2012-corner-all > :is(.m2012-content, .m2012-footer):nth-last-child(1n + 2) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.m2012-popup.m2012-corner-all > :is(.m2012-header, .m2012-footer):only-child {
+  border-radius: inherit;
+}

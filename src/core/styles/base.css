@@ -42,6 +42,14 @@
   color: var(--m2012-btn-up-link-color);
 }
 
+/* オーバーレイ（ui-overlay-X）。body surface の色で、グラデーションと枠線を持たない */
+.m2012-surface-overlay {
+  background: var(--m2012-body-bg);
+  color: var(--m2012-body-color);
+  font-family: var(--m2012-font-family);
+  text-shadow: var(--m2012-body-text-shadow);
+}
+
 /* 押下状態の btn surface（ui-btn-down-X）。スライダーのトラックなどに使う */
 .m2012-surface-btn-down {
   border: 1px solid var(--m2012-btn-down-border-color);

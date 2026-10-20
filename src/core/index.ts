@@ -15,6 +15,8 @@ export {
   sliderValueFromKey,
   flipSwitchLabelWidths,
 } from "./slider";
+export { DEFAULT_POPUP_TOLERANCE, popupTolerance, popupPlacement } from "./popup";
+export type { PopupTolerance, PopupPlacement } from "./popup";
 export { collapsibleClassNames, collapsibleIcon } from "./collapsible";
 export type { CollapsibleClassOptions, CollapsibleClassNames } from "./collapsible";
 export {
