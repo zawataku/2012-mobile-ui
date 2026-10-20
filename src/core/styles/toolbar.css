@@ -66,8 +66,9 @@
   display: inline-block;
   margin: 0;
 }
-:is(.m2012-header, .m2012-footer) > button.m2012-btn,
-:is(.m2012-header, .m2012-footer) > :is(.m2012-btn-left, .m2012-btn-right) > button.m2012-btn {
+/* <button> も <a> と同じく文字の幅にする（アイコンのみのボタンは button.css の 24px のまま） */
+:is(.m2012-header, .m2012-footer) > button.m2012-btn:not(.m2012-btn-icon-notext),
+:is(.m2012-header, .m2012-footer) > :is(.m2012-btn-left, .m2012-btn-right) > button.m2012-btn:not(.m2012-btn-icon-notext) {
   width: auto;
 }
 :is(.m2012-header, .m2012-footer) .m2012-btn-block {
