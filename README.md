@@ -16,7 +16,7 @@ jQuery Mobile 1.2.0 で提供されていたコンポーネントを、React コ
 | Button / ControlGroup | 実装済み |
 | Page / Header / Footer / Navbar / Fixed toolbar | 実装済み |
 | Grid / Collapsible / CollapsibleSet | 実装済み |
-| フォーム（TextInput / Slider / FlipSwitch / Checkbox / Radio / Select） | 未実装 |
+| フォーム（FieldContain / TextInput / Textarea / Slider / FlipSwitch / Checkbox / Radio / Select） | 実装済み（Select のカスタムメニュー・複数選択は未実装） |
 | Popup / Dialog / Loader | 未実装 |
 | ページ遷移アニメーション | 未実装 |
 
@@ -185,6 +185,39 @@ jQuery Mobile 1.2.0 のデフォルトテーマの swatch `a`〜`e` を使えま
 | `iconpos` / `collapsedIcon` / `expandedIcon` | | 見出しのアイコンの位置と種類（既定は左・`plus`・`minus`） |
 
 `CollapsibleSet` に指定した `theme` などは、中の `Collapsible` が受け継ぎます。
+
+### フォーム
+
+```tsx
+<FieldContain>
+  <TextInput label="名前" name="name" />
+</FieldContain>
+<FieldContain>
+  <ControlGroup legend="ペット" type="horizontal">
+    <Radio label="Cat" name="pet" value="cat" defaultChecked />
+    <Radio label="Dog" name="pet" value="dog" />
+  </ControlGroup>
+</FieldContain>
+<FieldContain>
+  <Select label="配送方法" name="shipping">
+    <option value="standard">Standard</option>
+    <option value="express">Express</option>
+  </Select>
+</FieldContain>
+```
+
+`FieldContain` で包むと、画面幅 450px 以上ではラベルと入力欄が横に並びます（`hideLabel` でラベルを見た目だけ隠す）。各部品の `label` を省略するときは `aria-label` などで名前を付けてください。
+
+| コンポーネント | 説明 |
+| --- | --- |
+| `TextInput` | 1 行の入力欄。`type="search"` では虫眼鏡と消去ボタンが付く。`input` の props をそのまま受け取る |
+| `Textarea` | 入力に合わせて高さが伸びる複数行の入力欄 |
+| `Checkbox` / `Radio` | ボタンの見た目のチェックボックス・ラジオ。`input` の props（`checked`・`defaultChecked`・`onChange`・`name` など）をそのまま受け取る。`ControlGroup` で縦・横に並べる（横並びではアイコンなしで、選択中が青くなる） |
+| `Select` | タップで OS のメニューを開くセレクトボックス。`select` の props をそのまま受け取る |
+| `Slider` | 数値欄とつまみ。`min`・`max`・`step`・`value` / `defaultValue`・`onChange(value)`・`highlight` |
+| `FlipSwitch` | ON / OFF のスイッチ。`checked` / `defaultChecked`・`onChange(checked)`・`onLabel` / `offLabel`・`name` |
+
+共通で `mini`（小さいサイズ）と `theme`（swatch）を指定できます。
 
 ### リンク
 
