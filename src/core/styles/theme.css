@@ -34,6 +34,9 @@
   --m2012-active-bg-end: #6facd5;
   --m2012-active-color: #fff;
   --m2012-active-text-shadow: 0 1px 1px #3373a5;
+
+  /* チェックしたチェックボックス・ラジオのアイコンの背景 */
+  --m2012-checked-icon-bg: #4596ce;
 }
 
 /* swatch A */

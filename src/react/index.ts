@@ -12,11 +12,15 @@ export {
   FieldContain,
   TextInput,
   Textarea,
+  Checkbox,
+  Radio,
 } from "./Form";
 export type {
   FieldContainProps,
   TextInputProps,
   TextareaProps,
+  CheckboxProps,
+  RadioProps,
 } from "./Form";
 export { Page, Content } from "./Page";
 export type { PageProps, ContentProps } from "./Page";

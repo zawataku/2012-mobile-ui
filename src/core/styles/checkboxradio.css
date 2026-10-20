@@ -1,0 +1,135 @@
+/*
+ * Checkbox / Radio（ui-checkbox / ui-radio）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.forms.checkboxradio.css に準拠。
+ * ラベルをボタンの見た目にし、本物の input をその後ろに置く。
+ * jQuery Mobile は JS でチェック状態の class（ui-checkbox-on など）を付け替えていたが、
+ * ここでは input:checked + ラベル の CSS で表すので、同じ name の別のラジオを選んだときも自動で切り替わる。
+ *
+ * マークアップ:
+ *   <div class="m2012-checkbox">
+ *     <input type="checkbox" id="agree">
+ *     <label for="agree" class="m2012-btn m2012-surface-btn m2012-clickable m2012-btn-corner-all m2012-btn-icon-left">
+ *       <span class="m2012-btn-inner m2012-btn-corner-all">
+ *         <span class="m2012-btn-text">同意する</span>
+ *         <span class="m2012-icon m2012-icon-checkbox-off m2012-icon-shadow"></span>
+ *       </span>
+ *     </label>
+ *   </div>
+ */
+
+:is(.m2012-checkbox, .m2012-radio) {
+  position: relative;
+  z-index: 1;
+  clear: both;
+  margin: 0;
+}
+
+/* 本物の input はラベルの後ろに小さく置く */
+:is(.m2012-checkbox, .m2012-radio) > input {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  z-index: 1;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 0;
+  outline: 0 !important;
+}
+
+:is(.m2012-checkbox, .m2012-radio) .m2012-btn {
+  z-index: 2;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  text-align: left;
+}
+:is(.m2012-checkbox, .m2012-radio) .m2012-btn.m2012-mini {
+  margin: 0.25em 0;
+}
+.m2012-controlgroup :is(.m2012-checkbox, .m2012-radio) .m2012-btn {
+  margin: 0;
+  font-size: 16px;
+}
+:is(.m2012-checkbox, .m2012-radio) .m2012-btn-inner {
+  white-space: normal;
+}
+
+/* アイコンの位置 */
+:is(.m2012-checkbox, .m2012-radio) .m2012-btn-icon-left .m2012-btn-inner {
+  padding-left: 45px;
+}
+:is(.m2012-checkbox, .m2012-radio) .m2012-mini.m2012-btn-icon-left .m2012-btn-inner {
+  padding-left: 36px;
+}
+:is(.m2012-checkbox, .m2012-radio) .m2012-btn-icon-right .m2012-btn-inner {
+  padding-right: 45px;
+}
+:is(.m2012-checkbox, .m2012-radio) .m2012-mini.m2012-btn-icon-right .m2012-btn-inner {
+  padding-right: 36px;
+}
+:is(.m2012-checkbox, .m2012-radio) :is(.m2012-btn-icon-top, .m2012-btn-icon-bottom) .m2012-btn-inner {
+  padding-right: 0;
+  padding-left: 0;
+  text-align: center;
+}
+
+:is(.m2012-checkbox, .m2012-radio) .m2012-icon {
+  top: 1.1em;
+}
+:is(.m2012-checkbox, .m2012-radio) .m2012-btn-icon-left .m2012-icon {
+  left: 15px;
+}
+:is(.m2012-checkbox, .m2012-radio) .m2012-mini.m2012-btn-icon-left .m2012-icon {
+  left: 9px;
+}
+:is(.m2012-checkbox, .m2012-radio) .m2012-btn-icon-right .m2012-icon {
+  right: 15px;
+}
+:is(.m2012-checkbox, .m2012-radio) .m2012-mini.m2012-btn-icon-right .m2012-icon {
+  right: 9px;
+}
+:is(.m2012-checkbox, .m2012-radio) .m2012-btn-icon-top .m2012-icon {
+  top: 10px;
+}
+:is(.m2012-checkbox, .m2012-radio) .m2012-btn-icon-bottom .m2012-icon {
+  top: auto;
+  bottom: 10px;
+}
+
+/* ===================================================================
+ * チェック状態（ui-checkbox-on / ui-radio-on）
+ * =================================================================== */
+.m2012-checkbox .m2012-icon {
+  border-radius: 3px;
+}
+.m2012-checkbox > input:checked + .m2012-btn .m2012-icon {
+  background-position: -648px 50%;
+  background-color: var(--m2012-checked-icon-bg);
+}
+.m2012-radio > input:checked + .m2012-btn .m2012-icon {
+  background-position: -720px 50%;
+  background-color: var(--m2012-checked-icon-bg);
+}
+
+/* 横並びの ControlGroup ではアイコンを出さず、チェックしたものを active にする */
+.m2012-controlgroup-horizontal :is(.m2012-checkbox, .m2012-radio) > input:checked + .m2012-btn {
+  border-color: var(--m2012-active-border-color);
+  background: var(--m2012-active-bg);
+  background-image: linear-gradient(var(--m2012-active-bg-start), var(--m2012-active-bg-end));
+  color: var(--m2012-active-color);
+  text-shadow: var(--m2012-active-text-shadow);
+}
+
+/* フォーカス（ui-focus） */
+:is(.m2012-checkbox, .m2012-radio) > input:focus-visible + .m2012-btn {
+  box-shadow: var(--m2012-focus-shadow);
+}
+
+/* 無効状態 */
+:is(.m2012-checkbox, .m2012-radio):has(> input:disabled) {
+  opacity: 0.3;
+}
+:is(.m2012-checkbox, .m2012-radio) > input:disabled + .m2012-btn {
+  cursor: default;
+  pointer-events: none;
+}
