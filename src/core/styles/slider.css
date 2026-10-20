@@ -1,0 +1,183 @@
+/*
+ * Slider / FlipSwitch（ui-slider / ui-slider-switch）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.forms.slider.css に準拠。
+ *
+ * マークアップ（スライダー）:
+ *   <input type="number" class="m2012-slider-input m2012-input-text …">
+ *   <div class="m2012-slider m2012-surface-btn-down m2012-btn-corner-all">
+ *     <div class="m2012-slider-bg m2012-btn-active m2012-btn-corner-all" style="width: 40%"></div>
+ *     <span class="m2012-slider-handle m2012-btn …" role="slider" style="left: 40%">…</span>
+ *   </div>
+ *
+ * マークアップ（フリップスイッチ）:
+ *   <div class="m2012-slider m2012-slider-switch m2012-surface-btn-down m2012-btn-corner-all">
+ *     <span class="m2012-slider-label m2012-slider-label-a m2012-btn-active …">On</span>
+ *     <span class="m2012-slider-label m2012-slider-label-b m2012-surface-btn-down …">Off</span>
+ *     <div class="m2012-slider-inneroffset">
+ *       <span class="m2012-slider-handle m2012-slider-handle-snapping m2012-btn …" role="switch"></span>
+ *     </div>
+ *   </div>
+ */
+
+/* ===================================================================
+ * 数値の入力欄
+ * =================================================================== */
+/* FieldContain の中でも入力欄の幅（78%）にせず、小さい数値欄のままにする */
+input.m2012-slider-input,
+.m2012-field-contain > input.m2012-slider-input {
+  box-sizing: content-box;
+  display: inline-block;
+  width: 50px;
+  margin: 0.5em 0;
+  padding: 0.4em;
+  font-size: 16px;
+  line-height: 1.4;
+  outline: 0;
+  background-image: none;
+}
+input.m2012-slider-input.m2012-mini,
+.m2012-field-contain > input.m2012-slider-input.m2012-mini {
+  width: 45px;
+  margin: 0.25em 0;
+  font-size: 14px;
+}
+.m2012-field-contain > input.m2012-slider-input {
+  margin: 0;
+}
+.m2012-slider-input::-webkit-outer-spin-button {
+  margin: 0;
+}
+
+/* ===================================================================
+ * トラックとつまみ
+ * =================================================================== */
+div.m2012-slider {
+  display: inline-block;
+  position: relative;
+  top: 4px;
+  width: 65%;
+  height: 15px;
+  margin: 0 2% 0 20px;
+  padding: 0;
+  overflow: visible;
+  touch-action: none;
+}
+div.m2012-slider-mini {
+  top: 2px;
+  height: 12px;
+  margin-left: 10px;
+}
+
+/* 値の位置までの塗り（data-highlight） */
+div.m2012-slider-bg {
+  height: 100%;
+  padding-right: 8px;
+  border: none;
+}
+
+.m2012-btn.m2012-slider-handle {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  width: 28px;
+  height: 28px;
+  margin: -15px 0 0 -15px;
+  outline: 0;
+}
+.m2012-btn.m2012-slider-handle .m2012-btn-inner {
+  height: 100%;
+  padding: 0;
+}
+div.m2012-slider-mini .m2012-btn.m2012-slider-handle {
+  width: 14px;
+  height: 14px;
+  margin: -8px 0 0 -7px;
+}
+div.m2012-slider-mini .m2012-btn.m2012-slider-handle .m2012-btn-inner {
+  width: 30px;
+  height: 30px;
+  margin: -9px 0 0 -9px;
+  padding: 0;
+  border-top: none;
+}
+
+.m2012-slider-inline {
+  display: inline-block;
+  width: 120px;
+}
+
+/* ===================================================================
+ * フリップスイッチ
+ * =================================================================== */
+div.m2012-slider-switch {
+  width: 5.8em;
+  height: 32px;
+  margin-left: 0;
+}
+.m2012-slider-handle-snapping {
+  transition: left 70ms linear;
+}
+div.m2012-slider-switch .m2012-btn.m2012-slider-handle {
+  margin: 1px 0 0 -15px;
+}
+.m2012-slider-inneroffset {
+  position: relative;
+  z-index: 1;
+  margin: 0 16px;
+}
+
+div.m2012-slider-switch.m2012-slider-mini {
+  width: 5em;
+  height: 29px;
+}
+div.m2012-slider-switch.m2012-slider-mini .m2012-slider-inneroffset {
+  margin: 0 15px 0 14px;
+}
+div.m2012-slider-switch.m2012-slider-mini .m2012-btn.m2012-slider-handle {
+  width: 25px;
+  height: 25px;
+  margin: 1px 0 0 -13px;
+}
+div.m2012-slider-switch.m2012-slider-mini .m2012-btn.m2012-slider-handle .m2012-btn-inner {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+span.m2012-slider-label {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 2;
+  text-align: center;
+  white-space: nowrap;
+  border-width: 0;
+}
+.m2012-slider-mini span.m2012-slider-label {
+  font-size: 14px;
+}
+span.m2012-slider-label-a {
+  left: 0;
+  z-index: 1;
+  text-indent: -1.5em;
+}
+span.m2012-slider-label-b {
+  right: 0;
+  z-index: 0;
+  text-indent: 1.5em;
+}
+
+/* つまみにフォーカスがあるときはスイッチ全体にも表示する */
+div.m2012-slider-switch:has(.m2012-slider-handle:focus-visible) {
+  box-shadow: var(--m2012-focus-shadow);
+}
+
+/* 無効状態 */
+div.m2012-slider.m2012-disabled .m2012-slider-handle {
+  cursor: default;
+}

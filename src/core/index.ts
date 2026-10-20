@@ -8,6 +8,13 @@ export { ICON_POSITIONS, buttonClassNames } from "./button";
 export type { IconPosition, ButtonClassOptions, ButtonClassNames } from "./button";
 export { gridClassNames } from "./grid";
 export type { GridColumns, GridClassNames } from "./grid";
+export {
+  snapSliderValue,
+  sliderPercent,
+  sliderValueFromPercent,
+  sliderValueFromKey,
+  flipSwitchLabelWidths,
+} from "./slider";
 export { collapsibleClassNames, collapsibleIcon } from "./collapsible";
 export type { CollapsibleClassOptions, CollapsibleClassNames } from "./collapsible";
 export {

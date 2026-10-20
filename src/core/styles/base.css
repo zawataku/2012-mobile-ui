@@ -42,6 +42,17 @@
   color: var(--m2012-btn-up-link-color);
 }
 
+/* 押下状態の btn surface（ui-btn-down-X）。スライダーのトラックなどに使う */
+.m2012-surface-btn-down {
+  border: 1px solid var(--m2012-btn-down-border-color);
+  background: var(--m2012-btn-down-bg);
+  background-image: linear-gradient(var(--m2012-btn-down-bg-start), var(--m2012-btn-down-bg-end));
+  color: var(--m2012-btn-down-color);
+  font-family: var(--m2012-font-family);
+  font-weight: bold;
+  text-shadow: var(--m2012-btn-down-text-shadow);
+}
+
 /* クリックできる btn surface のホバー / 押下（ui-btn-hover-X / ui-btn-down-X）
  * タッチ端末でホバーが残らないよう、ホバーはポインタ端末に限る */
 .m2012-clickable {

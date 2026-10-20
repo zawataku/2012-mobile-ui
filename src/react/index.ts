@@ -15,6 +15,8 @@ export {
   Checkbox,
   Radio,
   Select,
+  Slider,
+  FlipSwitch,
 } from "./Form";
 export type {
   FieldContainProps,
@@ -23,6 +25,8 @@ export type {
   CheckboxProps,
   RadioProps,
   SelectProps,
+  SliderProps,
+  FlipSwitchProps,
 } from "./Form";
 export { Page, Content } from "./Page";
 export type { PageProps, ContentProps } from "./Page";

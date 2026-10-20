@@ -6,3 +6,5 @@ export { Checkbox, Radio } from "./CheckboxRadio";
 export type { CheckboxProps, RadioProps } from "./CheckboxRadio";
 export { Select } from "./Select";
 export type { SelectProps } from "./Select";
+export { Slider, FlipSwitch } from "./Slider";
+export type { SliderProps, FlipSwitchProps } from "./Slider";
