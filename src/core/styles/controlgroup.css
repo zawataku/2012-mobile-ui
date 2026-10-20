@@ -5,6 +5,8 @@
  * jQuery Mobile は JS で先頭・末尾のボタンの角丸 class を付け替えていたが、
  * ここでは :first-child / :last-child で同じ見た目にする。
  *
+ * チェックボックス・ラジオ・Select は、包む要素（m2012-checkbox など）の中のボタンを同じように扱う。
+ *
  * マークアップ:
  *   <div class="m2012-controlgroup m2012-controlgroup-vertical m2012-corner-all" role="group">
  *     <div class="m2012-controlgroup-label" role="heading">見出し</div>
@@ -51,16 +53,21 @@
   border-bottom-width: 0;
 }
 .m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:first-child,
-.m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:first-child > .m2012-btn-inner {
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:first-child > .m2012-btn-inner,
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > :first-child > .m2012-btn,
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > :first-child > .m2012-btn > .m2012-btn-inner {
   border-top-left-radius: var(--m2012-radius-block);
   border-top-right-radius: var(--m2012-radius-block);
 }
 .m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:last-child,
-.m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:last-child > .m2012-btn-inner {
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:last-child > .m2012-btn-inner,
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > :last-child > .m2012-btn,
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > :last-child > .m2012-btn > .m2012-btn-inner {
   border-bottom-left-radius: var(--m2012-radius-block);
   border-bottom-right-radius: var(--m2012-radius-block);
 }
-.m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:last-child {
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > .m2012-btn:last-child,
+.m2012-controlgroup-vertical > .m2012-controlgroup-controls > :last-child > .m2012-btn {
   border-bottom-width: 1px;
 }
 
@@ -84,17 +91,29 @@
   line-height: 16px;
 }
 .m2012-controlgroup-horizontal > .m2012-controlgroup-controls > .m2012-btn:first-child,
-.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > .m2012-btn:first-child > .m2012-btn-inner {
+.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > .m2012-btn:first-child > .m2012-btn-inner,
+.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > :first-child > .m2012-btn,
+.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > :first-child > .m2012-btn > .m2012-btn-inner {
   border-top-left-radius: var(--m2012-radius-block);
   border-bottom-left-radius: var(--m2012-radius-block);
 }
 .m2012-controlgroup-horizontal > .m2012-controlgroup-controls > .m2012-btn:last-child,
-.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > .m2012-btn:last-child > .m2012-btn-inner {
+.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > .m2012-btn:last-child > .m2012-btn-inner,
+.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > :last-child > .m2012-btn,
+.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > :last-child > .m2012-btn > .m2012-btn-inner {
   border-top-right-radius: var(--m2012-radius-block);
   border-bottom-right-radius: var(--m2012-radius-block);
 }
-.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > .m2012-btn:last-child {
+.m2012-controlgroup-horizontal > .m2012-controlgroup-controls > :last-child {
   margin-right: 0;
+}
+
+/* 包む要素ごと横に並べ、中のボタンは余白なし */
+.m2012-controlgroup-horizontal :is(.m2012-checkbox, .m2012-radio, .m2012-select) {
+  margin: 0 -1px 0 0;
+}
+.m2012-controlgroup-horizontal :is(.m2012-checkbox, .m2012-radio, .m2012-select) .m2012-btn {
+  margin: 0;
 }
 
 /* ===================================================================

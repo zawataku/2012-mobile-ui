@@ -1,6 +1,7 @@
 import { useId } from "react";
 import type React from "react";
 import { cx } from "../../core";
+import { ControlGroupContext } from "./context";
 
 // ---------------------------------------------------------------------------
 // ControlGroup（data-role="controlgroup"）
@@ -47,7 +48,9 @@ export const ControlGroup = ({
           {legend}
         </div>
       )}
-      <div className="m2012-controlgroup-controls">{children}</div>
+      <div className="m2012-controlgroup-controls">
+        <ControlGroupContext value={{ type, mini }}>{children}</ControlGroupContext>
+      </div>
     </div>
   );
 };
