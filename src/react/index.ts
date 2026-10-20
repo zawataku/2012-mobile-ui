@@ -28,8 +28,8 @@ export type {
   SliderProps,
   FlipSwitchProps,
 } from "./Form";
-export { Popup } from "./Popup";
-export type { PopupProps, ModalTransition } from "./Popup";
+export { Popup, Dialog } from "./Popup";
+export type { PopupProps, DialogProps, ModalTransition } from "./Popup";
 export { Page, Content } from "./Page";
 export type { PageProps, ContentProps } from "./Page";
 export { Header, Footer, BackButton } from "./Toolbar";
