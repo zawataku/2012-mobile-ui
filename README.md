@@ -17,7 +17,7 @@ jQuery Mobile 1.2.0 で提供されていたコンポーネントを、React コ
 | Page / Header / Footer / Navbar / Fixed toolbar | 実装済み |
 | Grid / Collapsible / CollapsibleSet | 実装済み |
 | フォーム（FieldContain / TextInput / Textarea / Slider / FlipSwitch / Checkbox / Radio / Select） | 実装済み（Select のカスタムメニュー・複数選択は未実装） |
-| Popup / Dialog / Loader | 未実装 |
+| Popup / Dialog / Loader | 実装済み |
 | ページ遷移アニメーション | 未実装 |
 
 ページ遷移はアニメーションのみ提供する予定です。ルーティングは react-router などを利用してください。
@@ -218,6 +218,32 @@ jQuery Mobile 1.2.0 のデフォルトテーマの swatch `a`〜`e` を使えま
 | `FlipSwitch` | ON / OFF のスイッチ。`checked` / `defaultChecked`・`onChange(checked)`・`onLabel` / `offLabel`・`name` |
 
 共通で `mini`（小さいサイズ）と `theme`（swatch）を指定できます。
+
+### Popup / Dialog / Loader
+
+```tsx
+const [open, setOpen] = useState(false);
+const anchor = useRef<HTMLButtonElement>(null);
+
+<Button ref={anchor} onClick={() => setOpen(true)}>Menu</Button>
+<Popup open={open} onClose={() => setOpen(false)} positionTo={anchor} transition="pop">
+  <Listview inset>…</Listview>
+</Popup>
+
+<Dialog open={confirming} onClose={() => setConfirming(false)} title="Delete page?">
+  …
+</Dialog>
+
+<Loader visible={loading} text="Loading..." textVisible />
+```
+
+`Popup` と `Dialog` はネイティブの `<dialog>` を使い、宣言した場所の swatch を受け継いだまま最前面に表示します。Escape キー（`Popup` は背景のタップも）で `onClose` が呼ばれ、閉じると開く前の要素にフォーカスが戻ります。
+
+| コンポーネント | 主な props |
+| --- | --- |
+| `Popup` | `open` / `onClose`、`positionTo`（`"window"`・要素の ref・`{ x, y }`）、`theme`、`overlayTheme`（背景の色）、`transition`（`"none"`・`"pop"`・`"fade"`・`"slideup"`・`"slidedown"`）、`closeButton`（`"left"` / `"right"`）、`padded`、`tolerance` |
+| `Dialog` | `open` / `onClose`、`title`、`footer`、`theme`（本文、既定 `c`）、`headerTheme` / `footerTheme`（既定 `a`）、`overlayTheme`（既定 `a`）、`transition`（既定 `"pop"`） |
+| `Loader` | `visible`、`text`、`textVisible`（テキストも表示）、`textonly`、`theme`（既定 `a`） |
 
 ### リンク
 
