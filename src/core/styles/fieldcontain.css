@@ -1,0 +1,88 @@
+/*
+ * FieldContain とフォームのラベル（ui-field-contain / label.ui-input-text など）
+ *
+ * 値は jQuery Mobile 1.2.0 の jquery.mobile.forms.fieldcontain.css と、各フォームの CSS のラベル部分に準拠。
+ * jQuery Mobile は部品ごとに label.ui-input-text / label.ui-select / label.ui-slider と分けていたが、
+ * 見た目は同じなので m2012-label にまとめている。
+ *
+ * 画面幅 450px 以上では、ラベル（20%）と入力欄（78%）を横に並べる。
+ *
+ * マークアップ:
+ *   <div class="m2012-field-contain m2012-body m2012-br">
+ *     <label class="m2012-label" for="name">名前</label>
+ *     <input class="m2012-input-text …" id="name">
+ *   </div>
+ */
+
+.m2012-field-contain {
+  max-width: 100%;
+  margin: 0;
+  padding: 0.8em 0;
+  overflow: visible;
+  border-width: 0 0 1px 0;
+}
+.m2012-field-contain:last-child {
+  border-bottom-width: 0;
+}
+
+/* ラベル */
+.m2012-label {
+  display: block;
+  margin: 0 0 0.3em;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+/* ラベルを見た目だけ隠す（ui-hide-label） */
+.m2012-hide-label :is(.m2012-label, .m2012-controlgroup-label) {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* FieldContain の中のコントロールは上下の余白を持たない（入力欄は textinput.css、数値欄は slider.css） */
+.m2012-field-contain > .m2012-controlgroup,
+.m2012-field-contain .m2012-select .m2012-btn {
+  margin: 0;
+}
+
+@media all and (min-width: 450px) {
+  .m2012-field-contain {
+    margin: 1em 0;
+    padding: 0;
+    border-width: 0;
+  }
+
+  .m2012-field-contain .m2012-label,
+  .m2012-field-contain .m2012-controlgroup-label {
+    display: inline-block;
+    width: 20%;
+    margin: 0 2% 0 0;
+    vertical-align: top;
+  }
+
+  .m2012-field-contain > :is(input.m2012-input-text, textarea.m2012-input-text, .m2012-input-search, .m2012-select),
+  .m2012-field-contain .m2012-controlgroup-controls {
+    display: inline-block;
+    width: 78%;
+  }
+  /* 横並びの ControlGroup は項目を横に並べたまま幅だけ合わせる */
+  .m2012-field-contain .m2012-controlgroup-horizontal .m2012-controlgroup-controls {
+    display: inline-flex;
+  }
+  .m2012-field-contain div.m2012-slider {
+    width: 43%;
+  }
+  .m2012-field-contain div.m2012-slider-switch {
+    width: 5.5em;
+  }
+
+  .m2012-hide-label > :is(input.m2012-input-text, textarea.m2012-input-text, .m2012-input-search, .m2012-select),
+  .m2012-hide-label .m2012-controlgroup-controls {
+    width: 100%;
+  }
+}

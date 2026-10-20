@@ -6,7 +6,8 @@
  * jQuery Mobile 1.2.0 の PNG スプライトをそのまま使う。
  * 通常は 18px のスプライト、高解像度の画面では 36px のスプライトを半分のサイズで表示する。
  */
-.m2012-icon {
+.m2012-icon,
+.m2012-icon-searchfield::after {
   display: inline-block;
   vertical-align: middle;
   width: 18px;
@@ -29,7 +30,8 @@
 }
 
 @media (min-resolution: 1.5dppx) {
-  .m2012-icon {
+  .m2012-icon,
+  .m2012-icon-searchfield::after {
     background-image: url("../assets/icons-36-white.png");
     background-size: 776px 18px;
   }
@@ -56,11 +58,22 @@
 .m2012-icon-alert { background-position: -504px 50%; }
 .m2012-icon-info { background-position: -540px 50%; }
 .m2012-icon-home { background-position: -576px 50%; }
-.m2012-icon-search { background-position: -612px 50%; }
+.m2012-icon-search,
+.m2012-icon-searchfield::after { background-position: -612px 50%; }
 .m2012-icon-checkbox-on { background-position: -648px 50%; }
 .m2012-icon-checkbox-off { background-position: -684px 50%; }
 .m2012-icon-radio-on { background-position: -720px 50%; }
 .m2012-icon-radio-off { background-position: -756px 50%; }
+
+/* 検索欄の虫眼鏡（ui-icon-searchfield）。検索欄の左端に半透明で置く */
+.m2012-icon-searchfield::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  margin-top: -9px;
+  opacity: 0.5;
+}
 
 /* チェックボックス / ラジオの OFF はディスクなし */
 .m2012-icon-checkbox-off,

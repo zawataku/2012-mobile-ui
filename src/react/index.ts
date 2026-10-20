@@ -8,6 +8,16 @@ export { Grid } from "./Grid";
 export type { GridProps } from "./Grid";
 export { Collapsible, CollapsibleSet } from "./Collapsible";
 export type { CollapsibleProps, CollapsibleSetProps } from "./Collapsible";
+export {
+  FieldContain,
+  TextInput,
+  Textarea,
+} from "./Form";
+export type {
+  FieldContainProps,
+  TextInputProps,
+  TextareaProps,
+} from "./Form";
 export { Page, Content } from "./Page";
 export type { PageProps, ContentProps } from "./Page";
 export { Header, Footer, BackButton } from "./Toolbar";
