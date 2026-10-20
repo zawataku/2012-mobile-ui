@@ -14,6 +14,7 @@ export {
   Textarea,
   Checkbox,
   Radio,
+  Select,
 } from "./Form";
 export type {
   FieldContainProps,
@@ -21,6 +22,7 @@ export type {
   TextareaProps,
   CheckboxProps,
   RadioProps,
+  SelectProps,
 } from "./Form";
 export { Page, Content } from "./Page";
 export type { PageProps, ContentProps } from "./Page";
